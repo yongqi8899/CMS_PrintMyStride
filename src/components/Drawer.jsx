@@ -5,9 +5,9 @@ export default function Drawer() {
   return (
     <div className="drawer">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="fixed drawer-content top-2 left-20">
         {/* Page content here */}
-        <label htmlFor="my-drawer" className="btn btn-primary drawer-button">
+        <label htmlFor="my-drawer" className=" btn btn-primary drawer-button">
           &gt;
         </label>
       </div>
