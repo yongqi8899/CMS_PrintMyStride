@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import { getAllUsers } from "./data/users/loaders.js";
+import { getAllUsers, getOneUser } from "./data/users/loaders.js";
+import { getAllProducts, getOneProduct } from "./data/products/loaders.js";
+import { getAllOrders } from "./data/orders/loaders.js";
 
 import { createUser, updateUser, deleteUser } from "./data/users/actions.js";
 import { createProduct, updateProduct, deleteProduct } from "./data/products/actions.js";
@@ -54,6 +56,7 @@ export default function App() {
               <Users />
             </Suspense>
           ),
+          loader: getAllUsers
         },
         {
           path: "/users/:id",
@@ -96,7 +99,8 @@ export default function App() {
             <Suspense fallback={<Loading />}>
               <Products />
             </Suspense>
-          )
+          ),
+          loader: getAllProducts
         },
         {
           path: "/products/:id",
@@ -139,7 +143,8 @@ export default function App() {
             <Suspense fallback={<Loading />}>
               <Orders />
             </Suspense>
-          )
+          ),
+          loader: getAllOrders
         },
         {
           path: "/orders/:id",
