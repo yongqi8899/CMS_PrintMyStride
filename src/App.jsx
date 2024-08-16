@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 
 import { getAllUsers, getOneUser } from "./data/users/loaders.js";
 import { getAllProducts, getOneProduct } from "./data/products/loaders.js";
-import { getAllOrders } from "./data/orders/loaders.js";
+import { getAllOrders, getOneOrder } from "./data/orders/loaders.js";
 
 import { createUser, updateUser, deleteUser } from "./data/users/actions.js";
 import { createProduct, updateProduct, deleteProduct } from "./data/products/actions.js";
