@@ -8,63 +8,54 @@ export default function CreateForm() {
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create</h2>
-          <label className="flex items-center gap-2 input input-bordered">
-            username
+          <label className="flex items-center mt-2 input input-bordered">
+            name
             <input
               type="text"
-              name="username"
+              name="name"
               className="grow"
-              placeholder="Please write your username here"
+              placeholder="Please write your name here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            firstName
+          <label className="flex items-center mt-2 input input-bordered">
+            price
             <input
               type="text"
-              name="firstName"
+              name="price"
               className="grow"
-              placeholder="Please write your firstName here"
+              placeholder="Please write your price here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            lastName
+          <label className="flex items-center mt-2 input input-bordered">
+            order Id
             <input
               type="text"
-              name="lastName"
+              name="order Id"
               className="grow"
-              placeholder="Please write your lastName here"
+              placeholder="Please write your order Id here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            email
-            <input
-              type="email"
-              name="email"
-              className="grow"
-              placeholder="Please write email here"
-              required
-            />
-          </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            password
-            <input
-              type="password"
-              name="password"
-              className="grow"
-              placeholder="Please write password url here"
-              required
-            />
-          </label>
-          <select className="w-full max-w-xs select select-bordered">
+          <select className="w-full mt-2 select select-bordered">
             <option disabled selected>
-              Who shot first?
+              Should this product public?
             </option>
-            <option>User</option>
-            <option>Admin</option>
+            <option>ja</option>
+            <option>nein</option>
           </select>
+          <label className="mt-4 field">
+            description
+            <textarea
+              type="text"
+              name="description"
+              cols="40"
+              rows="10"
+              placeholder="Please write description here"
+              required
+            />
+          </label>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>

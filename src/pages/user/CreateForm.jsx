@@ -58,7 +58,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full max-w-xs mt-2 select select-bordered ">
+          <select className="w-full mt-2 select select-bordered ">
             <option disabled selected>
               Which role is the user?
             </option>

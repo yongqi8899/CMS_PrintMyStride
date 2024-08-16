@@ -8,7 +8,9 @@ export default function Products() {
   return (
     <div>
       products
-
+      <button className="btn" onClick={() => navigate(`/products/create`)}>
+        +
+      </button>
     </div>
     // <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
     //   {products &&

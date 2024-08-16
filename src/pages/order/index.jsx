@@ -6,7 +6,12 @@ export default function Oders() {
   const navigate = useNavigate();
 
   return (
-    <div>oders</div>
+    <div>
+    oders
+    <button className="btn" onClick={() => navigate(`/orders/create`)}>
+        +
+      </button>
+    </div>
     // <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
     //   {oders &&
     //     oders.map((oder) => (

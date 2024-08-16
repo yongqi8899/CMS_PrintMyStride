@@ -11,48 +11,62 @@ export default function UpdateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
   const { id } = useParams();
-  const users = useOutletContext();
-  const product = users.find((product) => product.id === +id);
+  const products = useOutletContext();
+  const product = products.find((product) => product.id === +id);
   return (
     <Form method="POST">
-      <div className="m-auto card-body w-96">
-        <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Update</h2>
-          <label className="flex items-center gap-2 input input-bordered">
-            Title
+      <div className="m-auto w-96">
+      <fieldset disabled={busy}>
+          <h2 className="m-auto text-xl bold">Create</h2>
+          <label className="flex items-center mt-2 input input-bordered">
+            name
             <input
               type="text"
-              name="title"
+              name="name"
               className="grow"
-              defaultValue={product.title}
+              placeholder="Please write your name here"
+              defaultValue={product.name}
+              required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            Author
+          <label className="flex items-center mt-2 input input-bordered">
+            price
             <input
               type="text"
-              name="author"
+              name="price"
               className="grow"
-              defaultValue={product.author}
+              placeholder="Please write your price here"
+              defaultValue={product.price}
+              required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            Cover
+          <label className="flex items-center mt-2 input input-bordered">
+            order Id
             <input
-              type="url"
-              name="cover"
+              type="text"
+              name="order Id"
               className="grow"
-              defaultValue={product.cover}
+              placeholder="Please write your order Id here"
+              defaultValue={product.orderId}
+              required
             />
           </label>
-          <label className="field">
-            Content
+          <select className="w-full mt-2 select select-bordered" defaultValue={product.isPublic}>
+            <option disabled selected>
+              Should this product public?
+            </option>
+            <option>ja</option>
+            <option>nein</option>
+          </select>
+          <label className="mt-4 field">
+            description
             <textarea
               type="text"
-              name="content"
+              name="description"
               cols="40"
               rows="10"
-              defaultValue={product.content}
+              placeholder="Please write description here"
+              defaultValue={product.description}
               required
             />
           </label>

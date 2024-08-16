@@ -96,44 +96,42 @@ export default function App() {
             <Suspense fallback={<Loading />}>
               <Products />
             </Suspense>
+          )
+        },
+        {
+          path: "/products/:id",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Product />
+            </Suspense>
           ),
-          children: [
-            {
-              path: "/products/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Product />
-                </Suspense>
-              ),
-            },
-            {
-              path: "/products/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateProductForm />
-                </Suspense>
-              ),
-              action: updateProduct,
-            },
-            {
-              path: "/products/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateProductForm />
-                </Suspense>
-              ),
-              action: createProduct,
-            },
-            {
-              path: "/products/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteProductForm />
-                </Suspense>
-              ),
-              action: deleteProduct,
-            },
-          ],
+        },
+        {
+          path: "/products/:id/update",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <UpdateProductForm />
+            </Suspense>
+          ),
+          action: updateProduct,
+        },
+        {
+          path: "/products/create",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <CreateProductForm />
+            </Suspense>
+          ),
+          action: createProduct,
+        },
+        {
+          path: "/products/:id/delete",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <DeleteProductForm />
+            </Suspense>
+          ),
+          action: deleteProduct,
         },
         {
           path: "/orders",
@@ -141,44 +139,42 @@ export default function App() {
             <Suspense fallback={<Loading />}>
               <Orders />
             </Suspense>
+          )
+        },
+        {
+          path: "/orders/:id",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Order />
+            </Suspense>
           ),
-          children: [
-            {
-              path: "/orders/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Order />
-                </Suspense>
-              ),
-            },
-            {
-              path: "/orders/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateOrderForm />
-                </Suspense>
-              ),
-              action: updateOrder,
-            },
-            {
-              path: "/orders/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateOrderForm />
-                </Suspense>
-              ),
-              action: createOrder,
-            },
-            {
-              path: "/orders/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteOrderForm />
-                </Suspense>
-              ),
-              action: deleteOrder,
-            },
-          ],
+        },
+        {
+          path: "/orders/:id/update",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <UpdateOrderForm />
+            </Suspense>
+          ),
+          action: updateOrder,
+        },
+        {
+          path: "/orders/create",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <CreateOrderForm />
+            </Suspense>
+          ),
+          action: createOrder,
+        },
+        {
+          path: "/orders/:id/delete",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <DeleteOrderForm />
+            </Suspense>
+          ),
+          action: deleteOrder,
         },
         {
           path: "/login",
