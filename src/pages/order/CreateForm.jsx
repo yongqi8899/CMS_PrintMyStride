@@ -8,47 +8,55 @@ export default function CreateForm() {
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create</h2>
-          <label className="flex items-center gap-2 input input-bordered">
-            Title
+          <label className="flex items-center mt-2 input input-bordered">
+            user Id
             <input
               type="text"
-              name="title"
+              name="userId"
               className="grow"
-              placeholder="Please write your title here"
+              placeholder="Please write userId here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            Author
+          <label className="flex items-center mt-2 input input-bordered">
+            product Id
             <input
               type="text"
-              name="author"
+              name="productId"
               className="grow"
-              placeholder="Please write author here"
+              placeholder="Please write productId here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            Cover
+          <label className="flex items-center mt-2 input input-bordered">
+          description
             <input
               type="url"
-              name="cover"
+              name="description"
               className="grow"
-              placeholder="Please write cover url here"
+              placeholder="Please write description here"
               required
             />
           </label>
-          <label className="field">
-            Content
-            <textarea
-              type="text"
-              name="content"
-              cols="40"
-              rows="10"
-              placeholder="Please write content here"
+          <label className="flex items-center mt-2 input input-bordered">
+            quantity
+            <input
+              type="url"
+              name="quantity"
+              className="grow"
+              placeholder="Please write quantity here"
               required
             />
           </label>
+          <select className="w-full mt-2 select select-bordered ">
+            <option disabled selected>
+              payed
+            </option>
+            <option>Feet_impression</option>
+            <option>3D_Druck</option>
+            <option>shoe_shipped</option>
+            <option>shoe_delivered</option>
+          </select>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
