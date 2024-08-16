@@ -6,7 +6,12 @@ export default function Users() {
   const navigate = useNavigate();
 
   return (
-    <div>Users</div>
+    <div>
+      Users
+      <button className="btn" onClick={() => navigate(`/users/create`)}>
+        +
+      </button>
+    </div>
     // <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
     //   {users &&
     //     users.map((user) => (

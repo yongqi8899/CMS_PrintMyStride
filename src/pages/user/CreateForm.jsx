@@ -5,52 +5,68 @@ export default function CreateForm() {
   const busy = navigation.state === "submitting";
   return (
     <Form method="POST">
-      <div className="m-auto card-body w-96">
+      <div className="m-auto w-96">
         <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Create User</h2>
-          <label className="flex items-center gap-2 input input-bordered">
-            Title
+          <h2 className="m-auto text-xl bold">Create</h2>
+          <label className="flex items-center mt-2 input input-bordered">
+            username
             <input
               type="text"
-              name="title"
+              name="username"
               className="grow"
-              placeholder="Please write your title here"
+              placeholder="Please write your username here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            Author
+          <label className="flex items-center mt-2 input input-bordered">
+            firstName
             <input
               type="text"
-              name="author"
+              name="firstName"
               className="grow"
-              placeholder="Please write author here"
+              placeholder="Please write your firstName here"
               required
             />
           </label>
-          <label className="flex items-center gap-2 input input-bordered">
-            Cover
+          <label className="flex items-center mt-2 input input-bordered">
+            lastName
             <input
-              type="url"
-              name="cover"
-              className="grow"
-              placeholder="Please write cover url here"
-              required
-            />
-          </label>
-          <label className="field">
-            Content
-            <textarea
               type="text"
-              name="content"
-              cols="40"
-              rows="10"
-              placeholder="Please write content here"
+              name="lastName"
+              className="grow"
+              placeholder="Please write your lastName here"
               required
             />
           </label>
+          <label className="flex items-center mt-2 input input-bordered">
+            email
+            <input
+              type="email"
+              name="email"
+              className="grow"
+              placeholder="Please write email here"
+              required
+            />
+          </label>
+          <label className="flex items-center mt-2 input input-bordered">
+            password
+            <input
+              type="password"
+              name="password"
+              className="grow"
+              placeholder="Please write password url here"
+              required
+            />
+          </label>
+          <select className="w-full max-w-xs mt-2 select select-bordered ">
+            <option disabled selected>
+              Which role is the user?
+            </option>
+            <option>User</option>
+            <option>Admin</option>
+          </select>
         </fieldset>
-        <div className="justify-end card-actions">
+        <div className="justify-end mt-2 card-actions ">
           <button className="btn" onClick={() => navigate(-1)}>
             Cancel
           </button>

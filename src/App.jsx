@@ -54,43 +54,41 @@ export default function App() {
               <Users />
             </Suspense>
           ),
-          children: [
-            {
-              path: "/users/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <User />
-                </Suspense>
-              ),
-            },
-            {
-              path: "/users/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateUserForm />
-                </Suspense>
-              ),
-              action: updateUser,
-            },
-            {
-              path: "/users/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateUserForm />
-                </Suspense>
-              ),
-              action: createUser,
-            },
-            {
-              path: "/users/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteUserForm />
-                </Suspense>
-              ),
-              action: deleteUser,
-            },
-          ],
+        },
+        {
+          path: "/users/:id",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <User />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/users/:id/update",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <UpdateUserForm />
+            </Suspense>
+          ),
+          action: updateUser,
+        },
+        {
+          path: "/users/create",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <CreateUserForm />
+            </Suspense>
+          ),
+          action: createUser,
+        },
+        {
+          path: "/users/:id/delete",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <DeleteUserForm />
+            </Suspense>
+          ),
+          action: deleteUser,
         },
         {
           path: "/products",

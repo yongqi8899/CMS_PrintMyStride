@@ -6,7 +6,10 @@ export default function Products() {
   const navigate = useNavigate();
 
   return (
-    <div>products</div>
+    <div>
+      products
+
+    </div>
     // <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
     //   {products &&
     //     products.map((product) => (
