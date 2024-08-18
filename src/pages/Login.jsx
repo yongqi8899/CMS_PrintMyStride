@@ -37,6 +37,7 @@ export default function Login() {
       toast.error(error.message);
     } finally {
       setLoading(false);
+      navigate("/")
     }
   };
   return (
