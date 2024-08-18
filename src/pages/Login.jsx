@@ -1,110 +1,101 @@
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { signin } from "@/data/auth/index.js";
+
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [
+    { email, password},
+    setForm,
+  ] = useState({
+    email: "",
+    password: ""
+  });
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [isLoged, setIsLoged] = useState(false);
+  const [loading, setLoading] = useState(false);
+  
+  const handleChange = (e) =>
+  setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const loginProcess = async (email, password) => {
-    try {
-      const res = await fetch(
-        "https://bookstorebackend-3qw1.onrender.com/login/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
-
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Login failed");
-        toast.error(data.error || "Login failed");
-      } else {
-        const { token } = data;
-        localStorage.setItem("token", token);
-        toast("Login success");
-        setIsLoged(true);
-        return true;
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
-      const isLoged = await loginProcess(email, password);
-      if (isLoged) {
-        navigate("/book");
-        window.location.reload();
-      }
+      e.preventDefault();
+      if (
+        !email ||
+        !password
+      )
+        throw new Error("All fields are required");
+      setLoading(true);
+      const res = await signin({
+        email,
+        password,
+      });
+      toast.success(res.success);
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
   return (
     <>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="text-center hero-content">
-          <div className="max-w-md">
-            <h3 className="mb-5 text-5xl font-bold text-primary">Login</h3>
-            <form className="card shadow-xl p-10" onSubmit={handleSubmit}>
-              <div className="form-control">
-                <label className="label" htmlFor="email">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="email"
-                  className="input input-bordered"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label" htmlFor="password">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <br />
-              <p>
-                No account?{" "}
-                <NavLink to="/register" className="text-primary">
-                  Register
-                </NavLink>
-              </p>
-              {error && <p className="text-red-500">{error}</p>}
-              <div className="form-control mt-6">
-                <button
-                  type="submit"
-                  className="btn btn-primary bg-primary hover:bg-teal-600 hover:border-transparent border-transparent text-white"
-                >
-                  Login
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      <form
+        className="flex flex-col gap-3 mx-auto my-5 md:w-1/2"
+        onSubmit={handleSubmit}
+      >
+        <label className="flex items-center gap-2 input input-bordered">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-4 h-4 opacity-70"
+          >
+            <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+            <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+          </svg>
+          <input
+            name="email"
+            value={email}
+            onChange={handleChange}
+            type="email"
+            className="grow"
+            placeholder="Email"
+          />
+        </label>
+        <label className="flex items-center gap-2 input input-bordered">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-4 h-4 opacity-70"
+          >
+            <path
+              fillRule="evenodd"
+              d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <input
+            name="password"
+            value={password}
+            onChange={handleChange}
+            type="password"
+            className="grow"
+            placeholder="Password"
+          />
+        </label>
+        <small>
+          Don&apos;t have an account?{" "}
+          <Link to="/register" className="text-primary hover:underline">
+            Register!
+          </Link>
+        </small>
+        <button className="self-center btn btn-primary" disabled={loading}>
+          Login
+        </button>
+      </form>
     </>
   );
 }
