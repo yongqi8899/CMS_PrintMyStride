@@ -50,6 +50,22 @@ export default function App() {
           ),
         },
         {
+          path: "/login",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Login />
+            </Suspense>
+          ),
+        },
+        {
+          path: "/register",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Register />
+            </Suspense>
+          ),
+        },
+        {
           path: "/users",
           element: (
             <Suspense fallback={<Loading />}>
@@ -181,22 +197,7 @@ export default function App() {
           ),
           action: deleteOrder,
         },
-        {
-          path: "/login",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Login />
-            </Suspense>
-          ),
-        },
-        {
-          path: "/register",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Register />
-            </Suspense>
-          ),
-        },
+
       ],
       errorElement: (
         <Suspense fallback={<Loading />}>
