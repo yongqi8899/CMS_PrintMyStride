@@ -6,8 +6,16 @@ import { getAllProducts, getOneProduct } from "./data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "./data/orders/loaders.js";
 
 import { createUser, updateUser, deleteUser } from "./data/users/actions.js";
-import { createProduct, updateProduct, deleteProduct } from "./data/products/actions.js";
-import { createOrder, updateOrder, deleteOrder } from "./data/orders/actions.js";
+import {
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} from "./data/products/actions.js";
+import {
+  createOrder,
+  updateOrder,
+  deleteOrder,
+} from "./data/orders/actions.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "./components/Loading.jsx";
@@ -68,136 +76,165 @@ export default function App() {
         {
           path: "/users",
           element: (
-            <Suspense fallback={<Loading />}>
-              <Users />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <Users />
+              </Suspense>
+            </ProtectLayout>
           ),
-          loader: getAllUsers
+          loader: getAllUsers,
         },
         {
           path: "/users/:id",
           element: (
-            <Suspense fallback={<Loading />}>
-              <User />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <User />
+              </Suspense>
+            </ProtectLayout>
           ),
         },
         {
           path: "/users/:id/update",
           element: (
-            <Suspense fallback={<Loading />}>
-              <UpdateUserForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <UpdateUserForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: updateUser,
         },
         {
           path: "/users/create",
           element: (
-            <Suspense fallback={<Loading />}>
-              <CreateUserForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <CreateUserForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: createUser,
         },
         {
           path: "/users/:id/delete",
           element: (
-            <Suspense fallback={<Loading />}>
-              <DeleteUserForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <DeleteUserForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: deleteUser,
         },
         {
           path: "/products",
           element: (
-            <Suspense fallback={<Loading />}>
-              <Products />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <Products />
+              </Suspense>
+            </ProtectLayout>
           ),
-          loader: getAllProducts
+          loader: getAllProducts,
         },
         {
           path: "/products/:id",
           element: (
-            <Suspense fallback={<Loading />}>
-              <Product />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <Product />
+              </Suspense>
+            </ProtectLayout>
           ),
         },
         {
           path: "/products/:id/update",
           element: (
-            <Suspense fallback={<Loading />}>
-              <UpdateProductForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <UpdateProductForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: updateProduct,
         },
         {
           path: "/products/create",
           element: (
-            <Suspense fallback={<Loading />}>
-              <CreateProductForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <CreateProductForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: createProduct,
         },
         {
           path: "/products/:id/delete",
           element: (
-            <Suspense fallback={<Loading />}>
-              <DeleteProductForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <DeleteProductForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: deleteProduct,
         },
         {
           path: "/orders",
           element: (
-            <Suspense fallback={<Loading />}>
-              <Orders />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <Orders />
+              </Suspense>
+            </ProtectLayout>
           ),
-          loader: getAllOrders
+          loader: getAllOrders,
         },
         {
           path: "/orders/:id",
           element: (
-            <Suspense fallback={<Loading />}>
-              <Order />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <Order />
+              </Suspense>
+            </ProtectLayout>
           ),
         },
         {
           path: "/orders/:id/update",
           element: (
-            <Suspense fallback={<Loading />}>
-              <UpdateOrderForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <UpdateOrderForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: updateOrder,
         },
         {
           path: "/orders/create",
           element: (
-            <Suspense fallback={<Loading />}>
-              <CreateOrderForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <CreateOrderForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: createOrder,
         },
         {
           path: "/orders/:id/delete",
           element: (
-            <Suspense fallback={<Loading />}>
-              <DeleteOrderForm />
-            </Suspense>
+            <ProtectLayout>
+              <Suspense fallback={<Loading />}>
+                <DeleteOrderForm />
+              </Suspense>
+            </ProtectLayout>
           ),
           action: deleteOrder,
         },
-
       ],
       errorElement: (
         <Suspense fallback={<Loading />}>

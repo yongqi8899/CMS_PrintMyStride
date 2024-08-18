@@ -1,4 +1,4 @@
-import { Navigate, Link, useLocation } from "react-router-dom";
+import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
@@ -42,7 +42,7 @@ export default function Login() {
       setLoading(false);
     }
     if(isAuthenticated){
-      return <Navigate to={location.state?.next || "/"} replace />;
+      return <Navigate to={location.state?.next || "/"} />;
     }
   };
   return (

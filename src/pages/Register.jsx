@@ -51,7 +51,6 @@ export default function Register() {
       toast.error(error.message);
     } finally {
       setLoading(false);
-      navigate("/")
     }
     if(isAuthenticated){
       navigate("/")
