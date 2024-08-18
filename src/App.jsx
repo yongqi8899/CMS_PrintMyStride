@@ -9,7 +9,7 @@ import { createUser, updateUser, deleteUser } from "./data/users/actions.js";
 import { createProduct, updateProduct, deleteProduct } from "./data/products/actions.js";
 import { createOrder, updateOrder, deleteOrder } from "./data/orders/actions.js";
 
-import { RootLayout } from "@/layout";
+import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "./components/Loading.jsx";
 
 const Dashboard = lazy(() => import("@/pages/dashboard/Dashboard"));

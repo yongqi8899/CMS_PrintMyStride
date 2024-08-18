@@ -2,8 +2,10 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signup } from "@/data/auth/index.js";
+import {useAuth} from "@/context/index.js"
 
 export default function Register() {
+  const { isAuthenticated, setCheckSession, setIsAuthenticated} = useAuth();
   const [
     { userName, firstName, lastName, email, password, confirmPassword },
     setForm,
@@ -49,6 +51,9 @@ export default function Register() {
       toast.error(error.message);
     } finally {
       setLoading(false);
+      navigate("/")
+    }
+    if(isAuthenticated){
       navigate("/")
     }
   };

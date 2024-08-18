@@ -1,10 +1,13 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Navigate, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
+import {useAuth} from "@/context/index.js"
 
 
 export default function Login() {
+  const location = useLocation();
+  const { isAuthenticated, setCheckSession, setIsAuthenticated} = useAuth();
   const [
     { email, password},
     setForm,
@@ -37,7 +40,9 @@ export default function Login() {
       toast.error(error.message);
     } finally {
       setLoading(false);
-      navigate("/")
+    }
+    if(isAuthenticated){
+      return <Navigate to={location.state?.next || "/"} replace />;
     }
   };
   return (
