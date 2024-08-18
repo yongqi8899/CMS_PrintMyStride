@@ -40,9 +40,10 @@ export default function Login() {
       toast.error(error.message);
     } finally {
       setLoading(false);
+      navigate("/")
     }
     if(isAuthenticated){
-      return <Navigate to={location.state?.next || "/"} />;
+      navigate("/")
     }
   };
   return (
