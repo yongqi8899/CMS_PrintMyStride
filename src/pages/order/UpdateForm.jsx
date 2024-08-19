@@ -19,46 +19,13 @@ export default function UpdateForm() {
       <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create</h2>
           <label className="flex items-center mt-2 input input-bordered">
-            user Id
-            <input
-              type="text"
-              name="userId"
-              className="grow"
-              placeholder="Please write userId here"
-              defaultValue={order.userId}
-              required
-            />
-          </label>
-          <label className="flex items-center mt-2 input input-bordered">
-            product Id
-            <input
-              type="text"
-              name="productId"
-              className="grow"
-              placeholder="Please write productId here"
-              defaultValue={order.productId}
-              required
-            />
-          </label>
-          <label className="flex items-center mt-2 input input-bordered">
-          description
-            <input
-              type="url"
-              name="description"
-              className="grow"
-              placeholder="Please write description here"
-              defaultValue={order.description}
-              required
-            />
-          </label>
-          <label className="flex items-center mt-2 input input-bordered">
             quantity
             <input
-              type="url"
+              type="text"
               name="quantity"
               className="grow"
               placeholder="Please write quantity here"
-              defaultValue={order.description}
+              defaultValue={order.quantity}
               required
             />
           </label>
@@ -71,6 +38,15 @@ export default function UpdateForm() {
             <option>shoe_shipped</option>
             <option>shoe_delivered</option>
           </select>
+          <textarea
+              type="text"
+              name="description"
+              cols="40"
+              rows="10"
+              placeholder="Please write description here"
+              defaultValue={order.description}
+              required
+            />
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>

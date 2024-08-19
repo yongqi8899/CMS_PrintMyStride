@@ -43,7 +43,7 @@ export default function UpdateForm() {
           <label className="flex items-center mt-2 input input-bordered">
             image
             <input
-              type="text"
+              type="url"
               name="image"
               className="grow"
               placeholder="Please write your image here"
@@ -51,17 +51,7 @@ export default function UpdateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 input input-bordered">
-            user Id
-            <input
-              type="text"
-              name="user Id"
-              className="grow"
-              placeholder="Please write your user Id here"
-              defaultValue={product.userId}
-              required
-            />
-          </label>
+
           <select className="w-full mt-2 select select-bordered">
             <option disabled selected>
               Should this product public?
