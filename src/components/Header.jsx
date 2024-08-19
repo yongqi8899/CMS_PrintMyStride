@@ -10,15 +10,11 @@ export default function Header() {
   const closeDetails = () => {
     detailsRef.current.removeAttribute("open");
   };
-  const handleLogout = () => {
-    logout();
-    closeDetails();
-    redirect("/login");
-  };
-  const handleLogin = () => {
-    closeDetails();
-    redirect("/");
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   closeDetails();
+  //   navigate("/login");
+  // };
 
   return (
     <header className="sticky top-0 flex text-gray-700 align-middle bg-primary navbar bold">
@@ -40,12 +36,12 @@ export default function Header() {
               <Link to="/me" onClick={closeDetails}>
                 <p> Me</p>
               </Link>
-              <Link onClick={handleLogout}>Logout</Link>
+              <Link onClick={logout}>Logout</Link>
             </details>
           ) : (
             <details ref={detailsRef} className="flex items-center bg-primary">
               <summary>Login</summary>
-              <Link to="/login" onClick={handleLogin}>
+              <Link to="/login" onClick={closeDetails}>
                 Login
               </Link>
               <Link to="/register" onClick={closeDetails}>

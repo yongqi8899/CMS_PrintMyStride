@@ -2,34 +2,26 @@ import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
-import {useAuth} from "@/context/index.js"
-
+import { useAuth } from "@/context/index.js";
 
 export default function Login() {
   const location = useLocation();
-  const { isAuthenticated, setCheckSession, setIsAuthenticated} = useAuth();
-  const [
-    { email, password},
-    setForm,
-  ] = useState({
+  const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
+  const [{ email, password }, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  
+
   const handleChange = (e) =>
-  setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      if (
-        !email ||
-        !password
-      )
-        throw new Error("All fields are required");
+      if (!email || !password) throw new Error("All fields are required");
       setLoading(true);
       const res = await signin({
         email,
@@ -40,12 +32,11 @@ export default function Login() {
       toast.error(error.message);
     } finally {
       setLoading(false);
-      navigate("/")
-    }
-    if(isAuthenticated){
-      navigate("/")
     }
   };
+  if (isAuthenticated) {
+    return <Navigate to={location.state?.next || "/"} />;
+  }
   return (
     <>
       <form

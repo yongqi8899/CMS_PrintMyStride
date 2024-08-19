@@ -21,7 +21,7 @@ export default function Drawer() {
           {/* Sidebar content here */}
           <li>
             {" "}
-            <NavLink to="/" className="text-xl btn btn-ghost">
+            <NavLink to="/dashboard" className="text-xl btn btn-ghost">
               Dashboard
             </NavLink>
           </li>

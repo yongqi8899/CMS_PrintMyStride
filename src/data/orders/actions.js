@@ -8,6 +8,7 @@ export const createOrder = async ({ request }) => {
     headers: {
       "content-type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(formData),
   });
   showToast(res, "create failed!", "create success!");
@@ -22,6 +23,7 @@ export const updateOrder = async ({ params, request }) => {
     headers: {
       "content-type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(formData),
   });
   showToast(res, "update failed!", "update success!");
@@ -35,6 +37,7 @@ export const deleteOrder = async ({ params }) => {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
   });
   showToast(res, "Delete failed!", "Delete success!");
   return redirect("/");
