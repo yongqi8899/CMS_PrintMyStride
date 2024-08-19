@@ -191,6 +191,7 @@ export default function App() {
               ),
             },
           ],
+          loader: getOneProduct,
         },
         {
           path: "/products/:id/update",
@@ -265,6 +266,7 @@ export default function App() {
               ),
             },
           ],
+          loader: getOneOrder,
         },
         {
           path: "/orders/:id/update",
