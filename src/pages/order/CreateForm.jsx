@@ -27,7 +27,7 @@ export default function CreateForm() {
             <option>shoe_shipped</option>
             <option>shoe_delivered</option>
           </select>
-          <label className="flex items-center mt-2 input input-bordered">
+          <label className="mt-4 field">
             description
             <textarea
               type="text"

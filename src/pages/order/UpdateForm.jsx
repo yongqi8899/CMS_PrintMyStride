@@ -16,7 +16,7 @@ export default function UpdateForm() {
   return (
     <Form method="POST">
       <div className="m-auto card-body w-96">
-      <fieldset disabled={busy}>
+        <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create</h2>
           <label className="flex items-center mt-2 input input-bordered">
             quantity
@@ -29,7 +29,10 @@ export default function UpdateForm() {
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered " defaultValue= {order.status}>
+          <select
+            className="w-full mt-2 select select-bordered "
+            defaultValue={order.status}
+          >
             <option disabled selected>
               payed
             </option>
@@ -38,7 +41,8 @@ export default function UpdateForm() {
             <option>shoe_shipped</option>
             <option>shoe_delivered</option>
           </select>
-          <textarea
+          <label className="mt-4 field">
+            <textarea
               type="text"
               name="description"
               cols="40"
@@ -47,6 +51,7 @@ export default function UpdateForm() {
               defaultValue={order.description}
               required
             />
+          </label>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
