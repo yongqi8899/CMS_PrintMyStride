@@ -90,48 +90,30 @@ export default function App() {
         },
         {
           path: "/users",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/users",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Users />
-                </Suspense>
-              ),
-              loader: getAllUsers,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Users />
+            </Suspense>
+          ),
+          loader: getAllUsers,
         },
         {
           path: "/users/:id",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/users/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <User />
-                </Suspense>
-              ),
-              loader: getOneUser,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <User />
+            </Suspense>
+          ),
+          loader: getOneUser,
         },
         {
           path: "/users/:id/update",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/users/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateUserForm />
-                </Suspense>
-              ),
-              action: updateUser,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <UpdateUserForm />
+            </Suspense>
+          ),
+          action: updateUser,
         },
         {
           path: "/users/create",
@@ -150,168 +132,102 @@ export default function App() {
         },
         {
           path: "/users/:id/delete",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/users/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteUserForm />
-                </Suspense>
-              ),
-              action: deleteUser,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <DeleteUserForm />
+            </Suspense>
+          ),
+          action: deleteUser,
         },
         {
           path: "/products",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/products",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Products />
-                </Suspense>
-              ),
-              loader: getAllProducts,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Products />
+            </Suspense>
+          ),
+          loader: getAllProducts,
         },
         {
           path: "/products/:id",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/products/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Product />
-                </Suspense>
-              ),
-              loader: getOneProduct,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Product />
+            </Suspense>
+          ),
+          loader: getOneProduct,
         },
         {
           path: "/products/:id/update",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/products/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateProductForm />
-                </Suspense>
-              ),
-              action: updateProduct,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <UpdateProductForm />
+            </Suspense>
+          ),
+          action: updateProduct,
         },
         {
           path: "/products/create",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/products/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateProductForm />
-                </Suspense>
-              ),
-              action: createProduct,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <CreateProductForm />
+            </Suspense>
+          ),
+          action: createProduct,
         },
         {
           path: "/products/:id/delete",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/products/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteProductForm />
-                </Suspense>
-              ),
-              action: deleteProduct,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <DeleteProductForm />
+            </Suspense>
+          ),
+          action: deleteProduct,
         },
         {
           path: "/orders",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/orders",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Orders />
-                </Suspense>
-              ),
-              loader: getAllOrders,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Orders />
+            </Suspense>
+          ),
+          loader: getAllOrders,
         },
         {
           path: "/orders/:id",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/orders/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Order />
-                </Suspense>
-              ),
-              loader: getOneOrder,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <Order />
+            </Suspense>
+          ),
+          loader: getOneOrder,
         },
         {
           path: "/orders/:id/update",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/orders/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateOrderForm />
-                </Suspense>
-              ),
-              action: updateOrder,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <UpdateOrderForm />
+            </Suspense>
+          ),
+          action: updateOrder,
         },
         {
           path: "/orders/create",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/orders/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateOrderForm />
-                </Suspense>
-              ),
-              action: createOrder,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <CreateOrderForm />
+            </Suspense>
+          ),
+          action: createOrder,
         },
         {
           path: "/orders/:id/delete",
-          element: <ProtectLayout />,
-          children: [
-            {
-              path: "/orders/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteOrderForm />
-                </Suspense>
-              ),
-              action: deleteOrder,
-            },
-          ],
+          element: (
+            <Suspense fallback={<Loading />}>
+              <DeleteOrderForm />
+            </Suspense>
+          ),
+          action: deleteOrder,
         },
       ],
       errorElement: (
