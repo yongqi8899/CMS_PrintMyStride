@@ -16,16 +16,16 @@ export default function UpdateForm() {
   return (
     <Form method="POST">
       <div className="m-auto w-96">
-      <fieldset disabled={busy}>
+        <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create</h2>
           <label className="flex items-center mt-2 input input-bordered">
-            name
+            title
             <input
               type="text"
-              name="name"
+              name="title"
               className="grow"
-              placeholder="Please write your name here"
-              defaultValue={product.name}
+              placeholder="Please write your title here"
+              defaultValue={product.title}
               required
             />
           </label>
@@ -41,17 +41,28 @@ export default function UpdateForm() {
             />
           </label>
           <label className="flex items-center mt-2 input input-bordered">
-            order Id
+            image
             <input
               type="text"
-              name="order Id"
+              name="image"
               className="grow"
-              placeholder="Please write your order Id here"
-              defaultValue={product.orderId}
+              placeholder="Please write your image here"
+              defaultValue={product.image}
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered" defaultValue={product.isPublic}>
+          <label className="flex items-center mt-2 input input-bordered">
+            user Id
+            <input
+              type="text"
+              name="user Id"
+              className="grow"
+              placeholder="Please write your user Id here"
+              defaultValue={product.userId}
+              required
+            />
+          </label>
+          <select className="w-full mt-2 select select-bordered">
             <option disabled selected>
               Should this product public?
             </option>

@@ -12,7 +12,7 @@ export const createUser = async ({ request }) => {
     body: JSON.stringify(formData),
   });
   showToast(res, "create failed!", "create success!");
-  return redirect("/");
+  return redirect("/users");
 };
 
 export const updateUser = async ({ params, request }) => {

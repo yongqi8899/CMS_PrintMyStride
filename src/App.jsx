@@ -91,7 +91,6 @@ export default function App() {
         {
           path: "/users",
           element: <ProtectLayout />,
-          loader: getAllUsers,
           children: [
             {
               path: "/users",
@@ -100,13 +99,13 @@ export default function App() {
                   <Users />
                 </Suspense>
               ),
+              loader: getAllUsers,
             },
           ],
         },
         {
           path: "/users/:id",
           element: <ProtectLayout />,
-          loader: getOneUser,
           children: [
             {
               path: "/users/:id",
@@ -115,6 +114,7 @@ export default function App() {
                   <User />
                 </Suspense>
               ),
+              loader: getOneUser,
             },
           ],
         },
@@ -129,9 +129,9 @@ export default function App() {
                   <UpdateUserForm />
                 </Suspense>
               ),
+              action: updateUser,
             },
           ],
-          action: updateUser,
         },
         {
           path: "/users/create",
@@ -144,9 +144,9 @@ export default function App() {
                   <CreateUserForm />
                 </Suspense>
               ),
+              action: createUser,
             },
           ],
-          action: createUser,
         },
         {
           path: "/users/:id/delete",
@@ -159,9 +159,9 @@ export default function App() {
                   <DeleteUserForm />
                 </Suspense>
               ),
+              action: deleteUser,
             },
           ],
-          action: deleteUser,
         },
         {
           path: "/products",
@@ -171,12 +171,12 @@ export default function App() {
               path: "/products",
               element: (
                 <Suspense fallback={<Loading />}>
-                <Products />
-              </Suspense>
+                  <Products />
+                </Suspense>
               ),
+              loader: getAllProducts,
             },
           ],
-          loader: getAllProducts,
         },
         {
           path: "/products/:id",
@@ -186,12 +186,12 @@ export default function App() {
               path: "/products/:id",
               element: (
                 <Suspense fallback={<Loading />}>
-                <Product />
-              </Suspense>
+                  <Product />
+                </Suspense>
               ),
+              loader: getOneProduct,
             },
           ],
-          loader: getOneProduct,
         },
         {
           path: "/products/:id/update",
@@ -201,12 +201,12 @@ export default function App() {
               path: "/products/:id/update",
               element: (
                 <Suspense fallback={<Loading />}>
-                <UpdateProductForm />
-              </Suspense>
+                  <UpdateProductForm />
+                </Suspense>
               ),
+              action: updateProduct,
             },
           ],
-          action: updateProduct,
         },
         {
           path: "/products/create",
@@ -216,12 +216,12 @@ export default function App() {
               path: "/products/create",
               element: (
                 <Suspense fallback={<Loading />}>
-                <CreateProductForm />
-              </Suspense>
+                  <CreateProductForm />
+                </Suspense>
               ),
+              action: createProduct,
             },
           ],
-          action: createProduct,
         },
         {
           path: "/products/:id/delete",
@@ -231,12 +231,12 @@ export default function App() {
               path: "/products/:id/delete",
               element: (
                 <Suspense fallback={<Loading />}>
-                <DeleteProductForm />
-              </Suspense>
+                  <DeleteProductForm />
+                </Suspense>
               ),
+              action: deleteProduct,
             },
           ],
-          action: deleteProduct,
         },
         {
           path: "/orders",
@@ -246,12 +246,12 @@ export default function App() {
               path: "/orders",
               element: (
                 <Suspense fallback={<Loading />}>
-                <Orders />
-              </Suspense>
+                  <Orders />
+                </Suspense>
               ),
+              loader: getAllOrders,
             },
           ],
-          loader: getAllOrders,
         },
         {
           path: "/orders/:id",
@@ -261,12 +261,12 @@ export default function App() {
               path: "/orders/:id",
               element: (
                 <Suspense fallback={<Loading />}>
-                <Order />
-              </Suspense>
+                  <Order />
+                </Suspense>
               ),
+              loader: getOneOrder,
             },
           ],
-          loader: getOneOrder,
         },
         {
           path: "/orders/:id/update",
@@ -276,12 +276,12 @@ export default function App() {
               path: "/orders/:id/update",
               element: (
                 <Suspense fallback={<Loading />}>
-                <UpdateOrderForm />
-              </Suspense>
+                  <UpdateOrderForm />
+                </Suspense>
               ),
+              action: updateOrder,
             },
           ],
-          action: updateOrder,
         },
         {
           path: "/orders/create",
@@ -291,12 +291,12 @@ export default function App() {
               path: "/orders/create",
               element: (
                 <Suspense fallback={<Loading />}>
-               <CreateOrderForm />
-              </Suspense>
+                  <CreateOrderForm />
+                </Suspense>
               ),
+              action: createOrder,
             },
           ],
-          action: createOrder,
         },
         {
           path: "/orders/:id/delete",
@@ -306,12 +306,12 @@ export default function App() {
               path: "/orders/:id/delete",
               element: (
                 <Suspense fallback={<Loading />}>
-               <DeleteOrderForm />
-              </Suspense>
+                  <DeleteOrderForm />
+                </Suspense>
               ),
+              action: deleteOrder,
             },
           ],
-          action: deleteOrder,
         },
       ],
       errorElement: (

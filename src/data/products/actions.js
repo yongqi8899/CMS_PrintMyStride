@@ -12,7 +12,7 @@ export const createProduct = async ({ request }) => {
     body: JSON.stringify(formData),
   });
   showToast(res, "create failed!", "create success!");
-  return redirect("/");
+  return redirect("/products");
 };
 
 export const updateProduct = async ({ params, request }) => {

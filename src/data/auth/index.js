@@ -6,7 +6,7 @@ if (!API_URL)
 const baseUrl = `${API_URL}/auth`;
 
 export const signup = async (formData) => {
-  const res = await fetch(`http://localhost:8080/auth/signup`, {
+  const res = await fetch(baseUrl + "/signup", {
     method: "POST",
     headers: {
       "content-type": "application/json",
