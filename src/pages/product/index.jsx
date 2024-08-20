@@ -20,19 +20,19 @@ export default function Products() {
             <div className="justify-end card-actions">
               <button
                 className="btn"
-                onClick={() => navigate(`/products/${product.id}/update`)}
+                onClick={() => navigate(`/products/${product._id}/update`)}
               >
                 update
               </button>
               <button
                 className="btn"
-                onClick={() => navigate(`/products/${product.id}/delete`)}
+                onClick={() => navigate(`/products/${product._id}/delete`)}
               >
                 delete
               </button>
               <button
                 className="btn"
-                onClick={() => navigate(`/products/${product.id}`)}
+                onClick={() => navigate(`/products/${product._id}`)}
               >
                 detail
               </button>

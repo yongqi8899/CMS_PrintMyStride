@@ -22,19 +22,19 @@ export default function Oders() {
               <div className="justify-end card-actions">
                 <button
                   className="btn"
-                  onClick={() => navigate(`/oders/${oder.id}/update`)}
+                  onClick={() => navigate(`/oders/${oder._id}/update`)}
                 >
                   update
                 </button>
                 <button
                   className="btn"
-                  onClick={() => navigate(`/oders/${oder.id}/delete`)}
+                  onClick={() => navigate(`/oders/${oder._id}/delete`)}
                 >
                   delete
                 </button>
                 <button
                   className="btn"
-                  onClick={() => navigate(`/oders/${oder.id}`)}
+                  onClick={() => navigate(`/oders/${oder._id}`)}
                 >
                   detail
                 </button>

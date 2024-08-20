@@ -27,19 +27,19 @@ export default function Users() {
                 <div className="justify-end card-actions">
                   <button
                     className="btn"
-                    onClick={() => navigate(`/users/${user.id}/update`)}
+                    onClick={() => navigate(`/users/${user._id}/update`)}
                   >
                     update
                   </button>
                   <button
                     className="btn"
-                    onClick={() => navigate(`/users/${user.id}/delete`)}
+                    onClick={() => navigate(`/users/${user._id}/delete`)}
                   >
                     delete
                   </button>
                   <button
                     className="btn"
-                    onClick={() => navigate(`/users/${user.id}`)}
+                    onClick={() => navigate(`/users/${user._id}`)}
                   >
                     detail
                   </button>
