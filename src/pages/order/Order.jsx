@@ -16,16 +16,15 @@ export default function User() {
   };
 
   return (
-    <div>
+    <>
       {order && (
-        <>
-          <div className="min-h-screen hero bg-base-200">
-            <div className="flex-col hero-content lg:flex-row-reverse">
-              <p>{order.quantity}</p>
+        <div className="min-h-screen hero bg-base-200">
+          <div className="flex-col hero-content lg:flex-row-reverse">
+            <div>
+              <h2 className="card-title">{order.quantity}</h2>
               <div className="flex justify-between mb-2">
                 <p>{order.status}</p>
               </div>
-              <p>{order.orderDate.split("T")[0]}</p>
               <div className="flex justify-end w-full gap-6">
                 <button className="btn" onClick={handleUpdate}>
                   update
@@ -39,8 +38,8 @@ export default function User() {
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }

@@ -9,6 +9,26 @@ export default function CreateForm() {
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create Order</h2>
           <label className="flex items-center mt-2 input input-bordered">
+            userId
+            <input
+              type="text"
+              name="userId"
+              className="grow"
+              placeholder="Please write userId here"
+              required
+            />
+          </label>
+          <label className="flex items-center mt-2 input input-bordered">
+            productId
+            <input
+              type="text"
+              name="productId"
+              className="grow"
+              placeholder="Please write productId here"
+              required
+            />
+          </label>
+          <label className="flex items-center mt-2 input input-bordered">
             quantity
             <input
               type="text"
