@@ -3,7 +3,7 @@ import {
   useNavigate,
   useNavigation,
   useParams,
-  useOutletContext,
+  useLoaderData,
 } from "react-router-dom";
 
 export default function UpdateForm() {
@@ -11,13 +11,13 @@ export default function UpdateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
   const { id } = useParams();
-  const products = useOutletContext();
-  const product = products.find((product) => product.id === +id);
+  const products = useLoaderData();
+  const product = products.find((product) => product._id === id);
   return (
     <Form method="POST">
       <div className="m-auto w-96">
         <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Create</h2>
+          <h2 className="m-auto text-xl bold">Update Product</h2>
           <label className="flex items-center mt-2 input input-bordered">
             title
             <input
@@ -51,13 +51,20 @@ export default function UpdateForm() {
               required
             />
           </label>
-
-          <select className="w-full mt-2 select select-bordered">
-            <option disabled selected>
-              Should this product public?
-            </option>
-            <option>ja</option>
-            <option>nein</option>
+          <label className="flex items-center mt-2 input input-bordered">
+            user id
+            <input
+              type="text"
+              name="userId"
+              className="grow"
+              placeholder="Please write your userId here"
+              defaultValue={product.userId}
+              required
+            />
+          </label>
+          <select className="w-full mt-2 select select-bordered" name="isPublic" defaultValue={product.isPublic}>
+            <option value="true">Public</option>
+            <option value="false">Private</option>
           </select>
           <label className="mt-4 field">
             description

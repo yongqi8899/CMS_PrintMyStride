@@ -7,7 +7,7 @@ export default function CreateForm() {
     <Form method="POST">
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Create</h2>
+          <h2 className="m-auto text-xl bold">Create Product</h2>
           <label className="flex items-center mt-2 input input-bordered">
             title
             <input
@@ -31,19 +31,26 @@ export default function CreateForm() {
           <label className="flex items-center mt-2 input input-bordered">
             image
             <input
-              type="url"
+              type="text"
               name="image"
               className="grow"
               placeholder="Please write your image here"
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered">
-            <option disabled selected>
-              Should this product public?
-            </option>
-            <option>ja</option>
-            <option>nein</option>
+          <label className="flex items-center mt-2 input input-bordered">
+            user id
+            <input
+              type="text"
+              name="userId"
+              className="grow"
+              placeholder="Please write your userId here"
+              required
+            />
+          </label>
+          <select className="w-full mt-2 select select-bordered" name="isPublic">
+            <option value="true">Public</option>
+            <option value="false">Private</option>
           </select>
           <label className="mt-4 field">
             description

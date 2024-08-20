@@ -5,7 +5,6 @@ export const getAllProducts = async () => {
   return data;
 };
 let allProducts = getAllProducts()
-console.log("getAllProducts",allProducts);
 export const getOneProduct = async () => {
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`);
   if (res.status !== 200) throw Error("something went wrong");

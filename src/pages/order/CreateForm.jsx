@@ -7,7 +7,27 @@ export default function CreateForm() {
     <Form method="POST">
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Create</h2>
+          <h2 className="m-auto text-xl bold">Create Order</h2>
+          <label className="flex items-center mt-2 input input-bordered">
+            userId
+            <input
+              type="text"
+              name="userId"
+              className="grow"
+              placeholder="Please write userId here"
+              required
+            />
+          </label>
+          <label className="flex items-center mt-2 input input-bordered">
+            productId
+            <input
+              type="text"
+              name="productId"
+              className="grow"
+              placeholder="Please write productId here"
+              required
+            />
+          </label>
           <label className="flex items-center mt-2 input input-bordered">
             quantity
             <input
@@ -18,26 +38,15 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered ">
-            <option disabled selected>
+          <select className="w-full mt-2 select select-bordered " name="status">
+            <option  value="payed">
               payed
             </option>
-            <option>Feet_impression</option>
-            <option>3D_Druck</option>
-            <option>shoe_shipped</option>
-            <option>shoe_delivered</option>
+            <option value="feet_impression">Feet_impression</option>
+            <option value="3D_Druck">3D_Druck</option>
+            <option value="shoe_shipped">shoe_shipped</option>
+            <option value="shoe_delivered">shoe_delivered</option>
           </select>
-          <label className="mt-4 field">
-            description
-            <textarea
-              type="text"
-              name="description"
-              cols="40"
-              rows="10"
-              placeholder="Please write description here"
-              required
-            />
-          </label>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>

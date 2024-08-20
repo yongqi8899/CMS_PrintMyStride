@@ -13,9 +13,9 @@ export default function RootLayout() {
       <ToastContainer position="top-right" autoClose={1500} theme="light" />
       <AuthContextProvider>
         <Header />
-        <Drawer />
         <Outlet />
         <Footer />
+        <Drawer />
       </AuthContextProvider>
     </div>
   );

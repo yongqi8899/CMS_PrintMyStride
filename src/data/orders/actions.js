@@ -40,5 +40,5 @@ export const deleteOrder = async ({ params }) => {
     credentials: "include",
   });
   showToast(res, "Delete failed!", "Delete success!");
-  return redirect("/");
+  return redirect("/orders");
 };
