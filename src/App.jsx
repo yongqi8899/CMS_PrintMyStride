@@ -75,8 +75,12 @@ export default function App() {
           ),
         },
         {
-          path: "/dashboard",
-          element: <ProtectLayout />,
+          index: "",
+          element: (
+            <Suspense fallback={<Loading />}>
+              <ProtectLayout />
+            </Suspense>
+          ),
           children: [
             {
               path: "/dashboard",
