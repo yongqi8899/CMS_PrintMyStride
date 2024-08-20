@@ -1,24 +1,24 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import { getAllUsers, getOneUser } from "./data/users/loaders.js";
-import { getAllProducts, getOneProduct } from "./data/products/loaders.js";
-import { getAllOrders, getOneOrder } from "./data/orders/loaders.js";
+import { getAllUsers, getOneUser } from "@/data/users/loaders.js";
+import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
+import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 
-import { createUser, updateUser, deleteUser } from "./data/users/actions.js";
+import { createUser, updateUser, deleteUser } from "@/data/users/actions.js";
 import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "./data/products/actions.js";
+} from "@/data/products/actions.js";
 import {
   createOrder,
   updateOrder,
   deleteOrder,
-} from "./data/orders/actions.js";
+} from "@/data/orders/actions.js";
 
 import { RootLayout, ProtectLayout } from "@/layout";
-import Loading from "./components/Loading.jsx";
+import Loading from "@/components/Loading.jsx";
 
 const Dashboard = lazy(() => import("@/pages/dashboard/Dashboard"));
 const ErrorPage = lazy(() => import("@/pages/ErrorPage"));
@@ -119,18 +119,12 @@ export default function App() {
             },
             {
               path: "/users/create",
-              element: <ProtectLayout />,
-              children: [
-                {
-                  path: "/users/create",
-                  element: (
-                    <Suspense fallback={<Loading />}>
-                      <CreateUserForm />
-                    </Suspense>
-                  ),
-                  action: createUser,
-                },
-              ],
+              element: (
+                <Suspense fallback={<Loading />}>
+                  <CreateUserForm />
+                </Suspense>
+              ),
+              action: createUser,
             },
             {
               path: "/users/:id/delete",

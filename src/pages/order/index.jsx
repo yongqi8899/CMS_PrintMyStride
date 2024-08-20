@@ -4,7 +4,6 @@ import CardImg from "@/components/CardImg";
 export default function Oders() {
   const oders = useLoaderData();
   const navigate = useNavigate();
-  console.log("oders", oders);
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
       <button className="btn" onClick={() => navigate(`/orders/create`)}>
