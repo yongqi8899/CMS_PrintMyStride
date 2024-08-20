@@ -14,14 +14,14 @@ export default {
     themes: [
       {
         light: {
-          ...require("daisyui/src/theming/themes")["light"],
-          primary: "#23B3A7",
-          secondary: "yellowgreen",
+          ...themes.light,
+          primary: '#23B3A7',
+          secondary: 'yellowgreen',
         },
         dark: {
-          ...require("daisyui/src/theming/themes")["dark"],
-          primary: "blue",
-          secondary: "teal",
+          ...themes.dark,
+          primary: 'blue',
+          secondary: 'teal',
         },
       },
     ],
