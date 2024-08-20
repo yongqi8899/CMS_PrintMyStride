@@ -6,11 +6,11 @@ export default function DeleteForm() {
   const busy = navigation.state === "submitting";
   return (
     <Form method="DELETE">
-      <div className="card w-96 bg-base-100 shadow-xl m-auto">
+      <div className="m-auto shadow-xl card w-96 bg-base-100">
         <div className="card-body">
-          <h2 className="card-title">Delete User</h2>
+          <h2 className="card-title">Delete Product</h2>
           <p>Are you sure you want delete it?</p>
-          <div className="card-actions justify-end">
+          <div className="justify-end card-actions">
             <button className="btn" type="button" onClick={() => navigate(-1)}>
               Cancel
             </button>
