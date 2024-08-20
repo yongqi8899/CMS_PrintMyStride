@@ -38,9 +38,19 @@ export default function CreateForm() {
               required
             />
           </label>
+          <label className="flex items-center mt-2 input input-bordered">
+            user id
+            <input
+              type="text"
+              name="userId"
+              className="grow"
+              placeholder="Please write your userId here"
+              required
+            />
+          </label>
           <select className="w-full mt-2 select select-bordered">
-            <option value="ja">Public</option>
-            <option value="nein">Private</option>
+            <option value="true">Public</option>
+            <option value="false">Private</option>
           </select>
           <label className="mt-4 field">
             description
