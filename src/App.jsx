@@ -106,7 +106,7 @@ export default function App() {
                   <User />
                 </Suspense>
               ),
-              loader: getOneUser,
+              loader: getAllUsers,
             },
             {
               path: "/users/:id/update",

@@ -3,8 +3,11 @@ import CardImg from "@/components/CardImg";
 
 export default function User() {
   const navigate = useNavigate();
-  const user = useLoaderData();
+  const users = useLoaderData();
+  const { id } = useParams();
 
+  const user = users.find((user) => user._id === id);
+  
   const handleDelete = () => {
     navigate(`/users/${user._id}/delete`);
   };
