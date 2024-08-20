@@ -17,7 +17,7 @@ export default function UpdateForm() {
     <Form method="POST">
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Create</h2>
+          <h2 className="m-auto text-xl bold">Update Order</h2>
           <label className="flex items-center mt-2 input input-bordered">
             quantity
             <input

@@ -7,7 +7,7 @@ export default function CreateForm() {
     <Form method="POST">
       <div className="m-auto w-96">
         <fieldset disabled={busy}>
-          <h2 className="m-auto text-xl bold">Create</h2>
+          <h2 className="m-auto text-xl bold">Create User</h2>
           <label className="flex items-center gap-2 mt-2 grow input input-bordered">
             <svg
               xmlns="http://www.w3.org/2000/svg"
