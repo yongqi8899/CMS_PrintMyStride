@@ -11,8 +11,8 @@ export default function UpdateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
   const { id } = useParams();
-  const oders = useOutletContext();
-  const order = oders.find((oder) => oder.id === +id);
+  const orders = useOutletContext();
+  const order = orders.find((order) => order.id === +id);
   return (
     <Form method="POST">
       <div className="m-auto card-body w-96">

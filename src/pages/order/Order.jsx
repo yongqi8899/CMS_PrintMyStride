@@ -3,25 +3,29 @@ import CardImg from "@/components/CardImg";
 
 export default function User() {
   const navigate = useNavigate();
-  const oder = useLoaderData();
+  const orders = useLoaderData();
+
+  const { id } = useParams();
+  const order = orders.find((order) => order._id === id);
 
   const handleDelete = () => {
-    navigate(`/oders/${oder._id}/delete`);
+    navigate(`/orders/${order._id}/delete`);
   };
   const handleUpdate = () => {
-    navigate(`/oders/${oder._id}/update`);
+    navigate(`/orders/${order._id}/update`);
   };
 
   return (
     <div>
-      {oder && (
+      {order && (
         <>
           <div className="min-h-screen hero bg-base-200">
             <div className="flex-col hero-content lg:flex-row-reverse">
-              <h2 className="card-title">{product.title}</h2>
+              <p>{order.quantity}</p>
               <div className="flex justify-between mb-2">
-                <p>{product.price}</p>
+                <p>{order.status}</p>
               </div>
+              <p>{order.orderDate.split("T")[0]}</p>
               <div className="flex justify-end w-full gap-6">
                 <button className="btn" onClick={handleUpdate}>
                   update

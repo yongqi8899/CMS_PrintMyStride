@@ -2,38 +2,38 @@ import { useOutletContext, useNavigate, useLoaderData } from "react-router-dom";
 
 import CardImg from "@/components/CardImg";
 export default function Oders() {
-  const oders = useLoaderData();
+  const orders = useLoaderData();
   const navigate = useNavigate();
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 justify-items-center">
       <button className="btn" onClick={() => navigate(`/orders/create`)}>
         +
       </button>
-      {oders &&
-        oders.map((oder) => (
-          <div className="card glass w-1fr" key={oder._id}>
+      {orders &&
+        orders.map((order) => (
+          <div className="card glass w-1fr" key={order._id}>
             <div className="card-body">
-                <p>{oder.quantity}</p>
+              <p>{order.quantity}</p>
               <div className="flex justify-between mb-2">
-                <p>{oder.status}</p>
-                <p>{oder.orderDate.split("T")[0]}</p>
+                <p>{order.status}</p>
+                <p>{order.orderDate.split("T")[0]}</p>
               </div>
               <div className="justify-end card-actions">
                 <button
                   className="btn"
-                  onClick={() => navigate(`/oders/${oder._id}/update`)}
+                  onClick={() => navigate(`/orders/${order._id}/update`)}
                 >
                   update
                 </button>
                 <button
                   className="btn"
-                  onClick={() => navigate(`/oders/${oder._id}/delete`)}
+                  onClick={() => navigate(`/orders/${order._id}/delete`)}
                 >
                   delete
                 </button>
                 <button
                   className="btn"
-                  onClick={() => navigate(`/oders/${oder._id}`)}
+                  onClick={() => navigate(`/orders/${order._id}`)}
                 >
                   detail
                 </button>

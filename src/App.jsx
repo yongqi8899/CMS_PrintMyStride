@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import { getAllUsers, getOneUser } from "@/data/users/loaders.js";
-import { getAllProducts, getOneProduct } from "@/data/products/loaders.js";
-import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
+import { getAllUsers} from "@/data/users/loaders.js";
+import { getAllProducts } from "@/data/products/loaders.js";
+import { getAllOrders } from "@/data/orders/loaders.js";
 
 import { createUser, updateUser, deleteUser } from "@/data/users/actions.js";
 import {
@@ -151,7 +151,7 @@ export default function App() {
                   <Product />
                 </Suspense>
               ),
-              loader: getOneProduct,
+              loader: getAllProducts,
             },
             {
               path: "/products/:id/update",
@@ -196,7 +196,7 @@ export default function App() {
                   <Order />
                 </Suspense>
               ),
-              loader: getOneOrder,
+              loader: getAllOrders,
             },
             {
               path: "/orders/:id/update",
