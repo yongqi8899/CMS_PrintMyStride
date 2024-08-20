@@ -33,7 +33,7 @@ export default function User() {
                 <button className="btn" onClick={handleDelete}>
                   delete
                 </button>
-                <button className="btn" onClick={() => navigate("/")}>
+                <button className="btn" onClick={() => navigate("/orders")}>
                   back
                 </button>
               </div>

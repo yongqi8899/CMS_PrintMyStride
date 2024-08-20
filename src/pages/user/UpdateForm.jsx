@@ -68,7 +68,7 @@ export default function UpdateForm() {
               type="password"
               name="password"
               className="grow"
-              placeholder="Please write password url here"
+              placeholder="Please write password here"
               defaultValue={user.password}
               required
             />
@@ -79,11 +79,8 @@ export default function UpdateForm() {
             name="role"
             defaultValue={user.role}
           >
-            <option disabled selected>
-              Which role is the user?
-            </option>
-            <option>User</option>
-            <option>Admin</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
           </select>
         </fieldset>
         <div className="justify-end mt-2 card-actions ">
