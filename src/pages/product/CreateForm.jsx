@@ -31,7 +31,7 @@ export default function CreateForm() {
           <label className="flex items-center mt-2 input input-bordered">
             image
             <input
-              type="url"
+              type="text"
               name="image"
               className="grow"
               placeholder="Please write your image here"
@@ -48,7 +48,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered">
+          <select className="w-full mt-2 select select-bordered" name="isPublic">
             <option value="true">Public</option>
             <option value="false">Private</option>
           </select>

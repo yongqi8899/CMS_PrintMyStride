@@ -51,13 +51,20 @@ export default function UpdateForm() {
               required
             />
           </label>
-
-          <select className="w-full mt-2 select select-bordered">
-            <option disabled selected>
-              Should this product public?
-            </option>
-            <option>ja</option>
-            <option>nein</option>
+          <label className="flex items-center mt-2 input input-bordered">
+            user id
+            <input
+              type="text"
+              name="userId"
+              className="grow"
+              placeholder="Please write your userId here"
+              defaultValue={product.userId}
+              required
+            />
+          </label>
+          <select className="w-full mt-2 select select-bordered" name="isPublic" defaultValue={product.isPublic}>
+            <option value="true">Public</option>
+            <option value="false">Private</option>
           </select>
           <label className="mt-4 field">
             description
