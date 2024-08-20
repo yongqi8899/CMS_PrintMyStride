@@ -39,11 +39,8 @@ export default function CreateForm() {
             />
           </label>
           <select className="w-full mt-2 select select-bordered">
-            <option disabled selected>
-              Should this product public?
-            </option>
-            <option>ja</option>
-            <option>nein</option>
+            <option value="ja">Public</option>
+            <option value="nein">Private</option>
           </select>
           <label className="mt-4 field">
             description

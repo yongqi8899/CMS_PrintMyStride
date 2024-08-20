@@ -3,7 +3,7 @@ import {
   useNavigate,
   useNavigation,
   useParams,
-  useOutletContext,
+  useLoaderData,
 } from "react-router-dom";
 
 export default function UpdateForm() {
@@ -11,8 +11,8 @@ export default function UpdateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
   const { id } = useParams();
-  const products = useOutletContext();
-  const product = products.find((product) => product.id === +id);
+  const products = useLoaderData();
+  const product = products.find((product) => product._id === id);
   return (
     <Form method="POST">
       <div className="m-auto w-96">

@@ -18,14 +18,14 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered ">
-            <option disabled selected>
+          <select className="w-full mt-2 select select-bordered " name="status">
+            <option  value="payed">
               payed
             </option>
-            <option>Feet_impression</option>
-            <option>3D_Druck</option>
-            <option>shoe_shipped</option>
-            <option>shoe_delivered</option>
+            <option value="feet_impression">Feet_impression</option>
+            <option value="3D_Druck">3D_Druck</option>
+            <option value="shoe_shipped">shoe_shipped</option>
+            <option value="shoe_delivered">shoe_delivered</option>
           </select>
         </fieldset>
         <div className="justify-end card-actions">

@@ -3,6 +3,7 @@ import { showToast } from "@/utils/index";
 
 export const createUser = async ({ request }) => {
   const formData = Object.fromEntries(await request.formData());
+  console.log(formData);
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users`, {
     method: "POST",
     headers: {
@@ -40,5 +41,5 @@ export const deleteUser = async ({ params }) => {
     credentials: "include",
   });
   showToast(res, "Delete failed!", "Delete success!");
-  return redirect("/");
+  return redirect("/users");
 };

@@ -1,4 +1,4 @@
-import { useOutletContext, useParams, useNavigate, useLoaderData } from "react-router-dom";
+import { useParams, useNavigate, useLoaderData } from "react-router-dom";
 import CardImg from "@/components/CardImg";
 
 export default function User() {
@@ -7,12 +7,12 @@ export default function User() {
   const { id } = useParams();
 
   const user = users.find((user) => user._id === id);
-  
+  console.log("u",user);
   const handleDelete = () => {
-    navigate(`/users/${user._id}/delete`);
+    navigate(`/users/${id}/delete`);
   };
   const handleUpdate = () => {
-    navigate(`/users/${user._id}/update`);
+    navigate(`/users/${id}/update`);
   };
 
   return (

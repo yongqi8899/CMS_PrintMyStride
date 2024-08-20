@@ -3,7 +3,7 @@ import {
   useNavigate,
   useNavigation,
   useParams,
-  useOutletContext,
+  useLoaderData,
 } from "react-router-dom";
 
 export default function UpdateForm() {
@@ -11,8 +11,8 @@ export default function UpdateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
   const { id } = useParams();
-  const orders = useOutletContext();
-  const order = orders.find((order) => order.id === +id);
+  const orders = useLoaderData();
+  const order = orders.find((order) => order._id === id);
   return (
     <Form method="POST">
       <div className="m-auto card-body w-96">
@@ -29,17 +29,14 @@ export default function UpdateForm() {
               required
             />
           </label>
-          <select
-            className="w-full mt-2 select select-bordered "
-            defaultValue={order.status}
-          >
-            <option disabled selected>
+          <select className="w-full mt-2 select select-bordered " name="status"  defaultValue={order.status}>
+            <option  value="payed">
               payed
             </option>
-            <option>Feet_impression</option>
-            <option>3D_Druck</option>
-            <option>shoe_shipped</option>
-            <option>shoe_delivered</option>
+            <option value="feet_impression">Feet_impression</option>
+            <option value="3D_Druck">3D_Druck</option>
+            <option value="shoe_shipped">shoe_shipped</option>
+            <option value="shoe_delivered">shoe_delivered</option>
           </select>
         </fieldset>
         <div className="justify-end card-actions">

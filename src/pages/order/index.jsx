@@ -1,4 +1,4 @@
-import { useOutletContext, useNavigate, useLoaderData } from "react-router-dom";
+import { useNavigate, useLoaderData } from "react-router-dom";
 
 import CardImg from "@/components/CardImg";
 export default function Oders() {

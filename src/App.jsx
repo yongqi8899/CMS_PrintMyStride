@@ -116,6 +116,7 @@ export default function App() {
                 </Suspense>
               ),
               action: updateUser,
+              loader: getAllUsers,
             },
             {
               path: "/users/create",
@@ -134,6 +135,7 @@ export default function App() {
                 </Suspense>
               ),
               action: deleteUser,
+              loader: getAllUsers,
             },
             {
               path: "/products",
@@ -161,6 +163,7 @@ export default function App() {
                 </Suspense>
               ),
               action: updateProduct,
+              loader: getAllProducts,
             },
             {
               path: "/products/create",
@@ -179,6 +182,7 @@ export default function App() {
                 </Suspense>
               ),
               action: deleteProduct,
+              loader: getAllProducts,
             },
             {
               path: "/orders",
@@ -206,6 +210,7 @@ export default function App() {
                 </Suspense>
               ),
               action: updateOrder,
+              loader: getAllOrders,
             },
             {
               path: "/orders/create",
@@ -224,6 +229,7 @@ export default function App() {
                 </Suspense>
               ),
               action: deleteOrder,
+              loader: getAllOrders,
             },
           ],
         },
