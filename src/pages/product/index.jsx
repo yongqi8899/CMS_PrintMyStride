@@ -4,7 +4,6 @@ import CardImg from "@/components/CardImg";
 export default function Products() {
   const products = useLoaderData();
   const navigate = useNavigate();
-  console.log("products", products);
   return (
     <div>
       <button className="btn" onClick={() => navigate(`/products/create`)}>

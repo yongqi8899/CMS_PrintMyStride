@@ -27,17 +27,6 @@ export default function CreateForm() {
             <option>shoe_shipped</option>
             <option>shoe_delivered</option>
           </select>
-          <label className="mt-4 field">
-            description
-            <textarea
-              type="text"
-              name="description"
-              cols="40"
-              rows="10"
-              placeholder="Please write description here"
-              required
-            />
-          </label>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>

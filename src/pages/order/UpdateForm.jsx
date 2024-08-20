@@ -41,17 +41,6 @@ export default function UpdateForm() {
             <option>shoe_shipped</option>
             <option>shoe_delivered</option>
           </select>
-          <label className="mt-4 field">
-            <textarea
-              type="text"
-              name="description"
-              cols="40"
-              rows="10"
-              placeholder="Please write description here"
-              defaultValue={order.description}
-              required
-            />
-          </label>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
