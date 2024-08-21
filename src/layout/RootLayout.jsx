@@ -5,8 +5,7 @@ import Drawer from "@/components/Drawer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { AuthContextProvider } from "../context";
-import { useLoaderData } from "react-router-dom";
-import { getAllProducts } from "../data/products/loaders";
+
 export default function RootLayout() {
   return (
     <div>
