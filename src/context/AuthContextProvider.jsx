@@ -12,8 +12,8 @@ const AuthContextProvider = ({ children }) => {
     const getUser = async () => {
       try {
         const user = await me();
-        setUser(user);
-        setIsAuthenticated(true);
+        setUser(()=>user);
+        setIsAuthenticated(()=>true);
       } catch (error) {
         console.log(error);
       } finally {
@@ -27,7 +27,7 @@ const AuthContextProvider = ({ children }) => {
     try {
       await signout();
       toast("Logged out successfully");
-      setIsAuthenticated(false);
+      setIsAuthenticated(()=>false);
       setUser(null);
     } catch (error) {
       console.log(error.message);

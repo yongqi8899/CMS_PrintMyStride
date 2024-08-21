@@ -5,6 +5,7 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
+import { useAuth } from "@/context";
 
 export default function UpdateForm() {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ export default function UpdateForm() {
   const { id } = useParams();
   const products = useLoaderData();
   const product = products.find((product) => product._id === id);
+  const { user } = useAuth();
+
   return (
     <Form method="POST">
       <div className="m-auto w-96">
@@ -51,18 +54,22 @@ export default function UpdateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 input input-bordered">
+          <label className="flex items-center hidden mt-2 input input-bordered">
             user id
             <input
               type="text"
               name="userId"
               className="grow"
               placeholder="Please write your userId here"
-              defaultValue={product.userId}
+              defaultValue={user._id}
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered" name="isPublic" defaultValue={product.isPublic}>
+          <select
+            className="w-full mt-2 select select-bordered"
+            name="isPublic"
+            defaultValue={product.isPublic}
+          >
             <option value="true">Public</option>
             <option value="false">Private</option>
           </select>

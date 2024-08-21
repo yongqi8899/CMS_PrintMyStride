@@ -5,6 +5,7 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
+import { useAuth } from '@/context';
 
 export default function UpdateForm() {
   const navigate = useNavigate();
@@ -12,20 +13,22 @@ export default function UpdateForm() {
   const busy = navigation.state === "submitting";
   const { id } = useParams();
   const orders = useLoaderData();
-  const order = orders.find((order) => order._id === id);
+  const order = orders.find((order) => order._id === id);  
+  const {  user } = useAuth();
+  
   return (
     <Form method="POST">
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Update Order</h2>
-          <label className="flex items-center mt-2 input input-bordered">
-            userId
+          <label className="flex items-center hidden mt-2 input input-bordered">
+            user id
             <input
               type="text"
               name="userId"
               className="grow"
-              placeholder="Please write userId here"
-              defaultValue={order.userId}
+              placeholder="Please write your userId here"
+              defaultValue={user._id}
               required
             />
           </label>

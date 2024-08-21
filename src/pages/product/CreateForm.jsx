@@ -1,9 +1,11 @@
 import { Form, useNavigation } from "react-router-dom";
+import { useAuth } from '@/context';
 
 export default function CreateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
-
+  const {  user } = useAuth();
+  
   return (
     <Form method="POST" encType="multipart/form-data">
       <div className="m-auto card-body w-96">
@@ -39,13 +41,14 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 input input-bordered">
+          <label className="flex items-center hidden mt-2 input input-bordered">
             user id
             <input
               type="text"
               name="userId"
               className="grow"
               placeholder="Please write your userId here"
+              defaultValue={user._id}
               required
             />
           </label>
