@@ -3,8 +3,9 @@ import { Form, useNavigation } from "react-router-dom";
 export default function CreateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
+
   return (
-    <Form method="POST">
+    <Form method="POST" encType="multipart/form-data">
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create Product</h2>
@@ -31,7 +32,7 @@ export default function CreateForm() {
           <label className="flex items-center mt-2 input input-bordered">
             image
             <input
-              type="text"
+              type="file"
               name="image"
               className="grow"
               placeholder="Please write your image here"
