@@ -5,7 +5,7 @@ export default function Products() {
   const products = useLoaderData();
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-4 justify-items-center">
       <button className="btn" onClick={() => navigate(`/products/create`)}>
         +
       </button>

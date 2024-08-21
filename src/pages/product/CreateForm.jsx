@@ -11,7 +11,7 @@ export default function CreateForm() {
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create Product</h2>
-          <label className="flex items-center mt-2 input input-bordered">
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
             title
             <input
               type="text"
@@ -21,7 +21,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 input input-bordered">
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
             price
             <input
               type="text"
@@ -31,7 +31,17 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 input input-bordered">
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
+            image
+            <input
+              type="text"
+              name="image"
+              className="grow"
+              placeholder="Please write your image here"
+              required
+            />
+          </label>
+          {/* <label className="flex items-center gap-2 mt-2 input input-bordered">
             image
             <input
               type="file"
@@ -40,8 +50,8 @@ export default function CreateForm() {
               placeholder="Please write your image here"
               required
             />
-          </label>
-          <label className="flex items-center hidden mt-2 input input-bordered">
+          </label> */}
+          <label className="flex items-center hidden gap-2 mt-2 input input-bordered">
             user id
             <input
               type="text"
@@ -52,7 +62,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full mt-2 select select-bordered" name="isPublic">
+          <select className="w-full gap-2 mt-2 select select-bordered" name="isPublic">
             <option value="true">Public</option>
             <option value="false">Private</option>
           </select>
