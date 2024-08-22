@@ -1,4 +1,4 @@
-import { useNavigate, Link, redirect } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signup } from "@/data/auth/index.js";
@@ -13,8 +13,6 @@ export default function Register() {
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -37,11 +35,13 @@ export default function Register() {
       toast.error(error.message);
     } finally {
       setLoading(false);
-    }
-    if (isAuthenticated) {
-      redirect("/");
+      setIsAuthenticated(true);
     }
   };
+  if (isAuthenticated) {
+    return <Navigate to={location.state?.next || "/"} />;
+  }
+
   return (
     <>
       <form
