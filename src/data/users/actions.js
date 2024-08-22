@@ -2,7 +2,11 @@ import { redirect } from "react-router-dom";
 import { showToast } from "@/utils/index";
 
 export const createUser = async ({ request }) => {
-  const formData = Object.fromEntries(await request.formData());
+  const data = Object.fromEntries(await request.formData());
+  const { confirmPassword, ...filteredData } = data;
+  const formData = {
+    ...filteredData
+  };
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users`, {
     method: "POST",
     headers: {
@@ -17,7 +21,11 @@ export const createUser = async ({ request }) => {
 
 export const updateUser = async ({ params, request }) => {
   const id = params.id;
-  const formData = Object.fromEntries(await request.formData());
+  const data = Object.fromEntries(await request.formData());
+  const { confirmPassword, ...filteredData } = data;
+  const formData = {
+    ...filteredData
+  };
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${id}`, {
     method: "PUT",
     headers: {

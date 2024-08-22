@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, redirect } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signup } from "@/data/auth/index.js";
@@ -39,7 +39,7 @@ export default function Register() {
       setLoading(false);
     }
     if (isAuthenticated) {
-      navigate("/");
+      redirect("/");
     }
   };
   return (
