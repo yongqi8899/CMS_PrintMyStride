@@ -4,7 +4,7 @@ import { useAuth } from "@/context";
 export default function Me() {
     const navigate = useNavigate();
     const {user} = useAuth();
-    console.log(user);
+    console.log("user",user);
   return (
     <div className="max-w-md m-auto shadow-xl card card-side bg-base-100">
       <figure>
@@ -15,8 +15,6 @@ export default function Me() {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{user.userName}</h2>
-        <p>Firstname: {user.firstName}</p>
-        <p>Lastname: {user.lastName}</p>
         <p>Email: {user.email}</p>
         <p>Role: {user.role}</p>
         <div className="justify-end card-actions">
