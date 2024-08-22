@@ -17,10 +17,6 @@ export default function Users() {
               <div className="card-body">
                 <h2 className="card-title">{user.userName}</h2>
                 <div className="flex justify-between mb-2">
-                  <p>{user.firstName}</p>
-                  <p>{user.lastName}</p>
-                </div>
-                <div className="flex justify-between mb-2">
                   <p>{user.createdAt.split("T")[0]}</p>
                   <p>{user.role}</p>
                 </div>
