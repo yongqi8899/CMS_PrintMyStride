@@ -34,23 +34,13 @@ export default function CreateForm() {
           <label className="flex items-center gap-2 mt-2 input input-bordered">
             image
             <input
-              type="text"
-              name="image"
-              className="grow"
-              placeholder="Please write your image here"
-              required
-            />
-          </label>
-          {/* <label className="flex items-center gap-2 mt-2 input input-bordered">
-            image
-            <input
               type="file"
               name="image"
               className="grow"
               placeholder="Please write your image here"
               required
             />
-          </label> */}
+          </label>
           <label className="flex items-center hidden gap-2 mt-2 input input-bordered">
             user id
             <input
