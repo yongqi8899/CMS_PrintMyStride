@@ -32,6 +32,7 @@ export default function Login() {
       toast.error(error.message);
     } finally {
       setLoading(false);
+      setIsAuthenticated(true);
     }
   };
   if (isAuthenticated) {
