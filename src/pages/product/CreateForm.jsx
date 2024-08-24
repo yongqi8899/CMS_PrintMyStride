@@ -32,6 +32,16 @@ export default function CreateForm() {
             />
           </label>
           <label className="flex items-center gap-2 mt-2 input input-bordered">
+            summary
+            <input
+              type="text"
+              name="summary"
+              className="grow"
+              placeholder="Please write your summary here"
+              required
+            />
+          </label>
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
             image
             <input
               type="file"

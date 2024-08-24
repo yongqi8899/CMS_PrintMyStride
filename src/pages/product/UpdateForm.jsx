@@ -44,6 +44,17 @@ export default function UpdateForm() {
             />
           </label>
           <label className="flex items-center gap-2 mt-2 input input-bordered">
+            summary
+            <input
+              type="text"
+              name="summary"
+              className="grow"
+              placeholder="Please write your summary here"
+              defaultValue={product.summary}
+              required
+            />
+          </label>
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
             image
             <input
               type="url"

@@ -17,6 +17,9 @@ export default function Products() {
             <div className="flex justify-between mb-2">
               <p>{product.price}</p>
             </div>
+            <div className="flex justify-between mb-2">
+              <p>{product.summary}</p>
+            </div>
             <div className="justify-end card-actions">
               <button
                 className="btn"

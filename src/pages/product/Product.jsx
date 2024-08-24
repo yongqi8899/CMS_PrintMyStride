@@ -24,6 +24,9 @@ export default function Product() {
               <div className="flex justify-between mb-2">
                 <p>{product.price}</p>
               </div>
+              <div className="flex justify-between mb-2">
+                <p>{product.summary}</p>
+              </div>
               <p className="py-6">{product.description}</p>
               <div className="flex justify-end w-full gap-6">
                 <button className="btn" onClick={handleUpdate}>

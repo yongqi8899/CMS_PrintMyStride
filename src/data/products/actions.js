@@ -2,14 +2,10 @@ import { redirect } from "react-router-dom";
 import { showToast } from "@/utils/index";
 
 export const createProduct = async ({ request }) => {
-  // const formData = Object.fromEntries(await request.formData());
   const formData = await request.formData();
   console.log(formData.image);
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products`, {
     method: "POST",
-    // headers: {
-    //   "content-type": "application/json",
-    // },
     credentials: "include",
     body: formData,
   });
