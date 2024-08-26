@@ -3,7 +3,6 @@ import { showToast } from "@/utils/index";
 
 export const createProduct = async ({ request }) => {
   const formData = await request.formData();
-  console.log(formData.image);
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products`, {
     method: "POST",
     credentials: "include",
