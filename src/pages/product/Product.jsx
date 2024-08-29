@@ -20,6 +20,7 @@ export default function Product() {
         <div className="min-h-screen hero bg-base-200">
           <div className="flex-col hero-content lg:flex-row-reverse">
             <div>
+              <CardImg src={product.image} alt={product.title} />
               <h2 className="card-title">{product.title}</h2>
               <div className="flex justify-between mb-2">
                 <p>{product.price}</p>

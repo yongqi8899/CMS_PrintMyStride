@@ -6,6 +6,7 @@ import {
   useLoaderData,
 } from "react-router-dom";
 import { useAuth } from "@/context";
+import CardImg from "@/components/CardImg";
 
 export default function UpdateForm() {
   const navigate = useNavigate();
@@ -15,12 +16,22 @@ export default function UpdateForm() {
   const products = useLoaderData();
   const product = products.find((product) => product._id === id);
   const { user } = useAuth();
-
   return (
-    <Form method="POST">
-      <div className="m-auto w-96">
+    <Form method="POST" encType="multipart/form-data">
+      <div className="m-auto w-96 mb-20">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Update Product</h2>
+          <div className="relative">
+            <CardImg src={product.image} alt={product.title} />
+            <label for="image" className="btn absolute right-0 bottom-0">
+              change image
+              <input
+                type="file"
+                name="image"
+                className="opacity-0 absolute"
+              />
+            </label>
+          </div>
           <label className="flex items-center gap-2 mt-2 input input-bordered">
             title
             <input
@@ -29,7 +40,6 @@ export default function UpdateForm() {
               className="grow"
               placeholder="Please write your title here"
               defaultValue={product.title}
-              required
             />
           </label>
           <label className="flex items-center gap-2 mt-2 input input-bordered">
@@ -40,7 +50,6 @@ export default function UpdateForm() {
               className="grow"
               placeholder="Please write your price here"
               defaultValue={product.price}
-              required
             />
           </label>
           <label className="flex items-center gap-2 mt-2 input input-bordered">
@@ -51,18 +60,6 @@ export default function UpdateForm() {
               className="grow"
               placeholder="Please write your summary here"
               defaultValue={product.summary}
-              required
-            />
-          </label>
-          <label className="flex items-center gap-2 mt-2 input input-bordered">
-            image
-            <input
-              type="url"
-              name="image"
-              className="grow"
-              placeholder="Please write your image here"
-              defaultValue={product.image}
-              required
             />
           </label>
           <label className="flex items-center hidden gap-2 mt-2 input input-bordered">
@@ -73,7 +70,6 @@ export default function UpdateForm() {
               className="grow"
               placeholder="Please write your userId here"
               defaultValue={user._id}
-              required
             />
           </label>
           <select
@@ -93,7 +89,6 @@ export default function UpdateForm() {
               rows="10"
               placeholder="Please write description here"
               defaultValue={product.description}
-              required
             />
           </label>
         </fieldset>

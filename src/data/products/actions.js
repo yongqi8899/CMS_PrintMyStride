@@ -14,14 +14,11 @@ export const createProduct = async ({ request }) => {
 
 export const updateProduct = async ({ params, request }) => {
   const id = params.id;
-  const formData = Object.fromEntries(await request.formData());
+  const formData = await request.formData();
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`, {
     method: "PUT",
-    headers: {
-      "content-type": "application/json",
-    },
     credentials: "include",
-    body: JSON.stringify(formData),
+    body: formData,
   });
   showToast(res, "update failed!", "update success!");
   return redirect(`/products/${id}`);

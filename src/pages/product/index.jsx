@@ -1,6 +1,7 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
 
 import CardImg from "@/components/CardImg";
+
 export default function Products() {
   const products = useLoaderData();
   const navigate = useNavigate();

@@ -7,7 +7,6 @@ export default function User() {
   const { id } = useParams();
 
   const user = users.find((user) => user._id === id);
-  console.log("u",user);
   const handleDelete = () => {
     navigate(`/users/${id}/delete`);
   };

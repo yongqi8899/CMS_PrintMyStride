@@ -47,7 +47,6 @@ export default function CreateForm() {
               type="file"
               name="image"
               className="grow"
-              placeholder="Please write your image here"
               required
             />
           </label>

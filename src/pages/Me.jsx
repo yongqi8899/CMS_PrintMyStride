@@ -4,7 +4,6 @@ import { useAuth } from "@/context";
 export default function Me() {
     const navigate = useNavigate();
     const {user} = useAuth();
-    console.log("user",user);
   return (
     <div className="max-w-md m-auto shadow-xl card card-side bg-base-100">
       <figure>
