@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 p-4 bg-primary footer footer-center text-base-content">
+    <footer className="fixed bottom-0 p-4 footer footer-center font-redressed bg-neutral">
       <aside>
-        <p>Copyright ©</p>
+        <p>Copyright © Yongqi Zhang</p>
       </aside>
     </footer>
   );

@@ -5,19 +5,13 @@ export default function Drawer() {
   return (
     <div className="drawer">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="fixed drawer-content top-2 left-20">
-        {/* Page content here */}
-        <label htmlFor="my-drawer" className=" btn btn-primary drawer-button">
-          &gt;
-        </label>
-      </div>
       <div className="drawer-side">
         <label
           htmlFor="my-drawer"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="min-h-full p-4 menu bg-base-200 text-base-content w-80">
+        <ul className="min-h-full p-4 menu mt-20 w-60 bg-neutral">
           {/* Sidebar content here */}
           <li>
             {" "}

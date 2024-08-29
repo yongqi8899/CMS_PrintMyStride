@@ -1,3 +1,14 @@
+@import "@fontsource/redressed";
+@import "@fontsource/roboto";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-gradient-blue {
+  @apply bg-gradient-blue hover:bg-gradient-lisa text-white rounded-xl text-center py-1;
+}
+
+.btn-gradient-green {
+  @apply bg-gradient-green hover:bg-gradient-pink text-white rounded-3xl text-center py-1;
+}
