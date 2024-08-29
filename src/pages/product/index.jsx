@@ -1,5 +1,5 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
-
+import {formatCurrency} from "@/utils";
 import CardLayout from "@/components/CardLayout";
 export default function Products() {
   const products = useLoaderData();
@@ -12,7 +12,7 @@ export default function Products() {
     children: (
       <div className="flex text-2xl font-redressed justify-between">
         <h2 >{item.title}</h2>
-        <div className="text-secondary">${item.price}</div>
+        <div className="text-secondary"> {formatCurrency(item.price)}{" "}</div>
       </div>
     ),
     createNav: `/${path}/create`,

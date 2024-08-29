@@ -29,7 +29,6 @@ export default function Header() {
           <h1 className="text-4xl">PrintMyStride</h1>
         </NavLink>
         <div className=" drawer-content">
-          {/* Page content here */}
           <label htmlFor="my-drawer" className="ml-10 bg-neutral text-6xl">
             &gt;
           </label>

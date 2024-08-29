@@ -1,5 +1,6 @@
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
-import CardImg from "@/components/CardImg";
+import Img from "@/components/Img.jsx";
+import {formatCurrency} from "@/utils";
 
 export default function Product() {
   const navigate = useNavigate();
@@ -17,29 +18,35 @@ export default function Product() {
   return (
     <>
       {product && (
-        <div className="min-h-screen hero bg-base-200">
-          <div className="flex-col hero-content lg:flex-row-reverse">
-            <div>
-              <CardImg src={product.image} alt={product.title} />
-              <h2 className="card-title">{product.title}</h2>
-              <div className="flex justify-between mb-2">
-                <p>{product.price}</p>
+        <div className="flex-wrap items-center m-10 my-10 md:my-20 card card-side w-90vw">
+          <div className="md:w-1/2">
+            <Img src={product.image} title={product.title} />
+          </div>
+
+          <div className="card-body md:w-1/2">
+            <h2 className="text-3xl truncate">{product.title}</h2>
+            <p className="text-xl text-secondary">
+              {formatCurrency(product.price)}{" "}
+            </p>
+            <p>{product.summary}</p>
+            <div className="my-10 ">
+              <h3 className="text-2xl font-redressed text-secondary">
+                Product Description:
+              </h3>
+              <div>
+                <p>{product.description}</p>
               </div>
-              <div className="flex justify-between mb-2">
-                <p>{product.summary}</p>
-              </div>
-              <p className="py-6">{product.description}</p>
-              <div className="flex justify-end w-full gap-6">
-                <button className="btn" onClick={handleUpdate}>
-                  update
-                </button>
-                <button className="btn" onClick={handleDelete}>
-                  delete
-                </button>
-                <button className="btn" onClick={() => navigate("/products")}>
-                  back
-                </button>
-              </div>
+            </div>
+            <div className="items-center justify-start card-actions">
+              <button className="btn" onClick={handleUpdate}>
+                update
+              </button>
+              <button className="btn" onClick={handleDelete}>
+                delete
+              </button>
+              <button className="btn" onClick={() => navigate("/products")}>
+                back
+              </button>
             </div>
           </div>
         </div>
