@@ -5,6 +5,7 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
+import {useState} from "react";
 import { useAuth } from "@/context";
 import CardImg from "@/components/CardImg";
 
@@ -16,19 +17,32 @@ export default function UpdateForm() {
   const products = useLoaderData();
   const product = products.find((product) => product._id === id);
   const { user } = useAuth();
+  const [imageSrc, setImageSrc] = useState(product.image);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImageSrc(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <Form method="POST" encType="multipart/form-data">
       <div className="m-auto w-96 mb-20">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Update Product</h2>
           <div className="relative">
-            <CardImg src={product.image} alt={product.title} />
+            <CardImg src={imageSrc} alt={product.title} />
             <label for="image" className="btn absolute right-0 bottom-0">
               change image
               <input
                 type="file"
                 name="image"
                 className="opacity-0 absolute"
+                onChange={handleImageChange}
               />
             </label>
           </div>
