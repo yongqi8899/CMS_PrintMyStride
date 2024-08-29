@@ -30,7 +30,7 @@ export default function Header() {
         </NavLink>
         <div className=" drawer-content">
           {/* Page content here */}
-          <label htmlFor="my-drawer" className=" btn drawer-button text-6xl">
+          <label htmlFor="my-drawer" className="ml-10 bg-neutral text-6xl">
             &gt;
           </label>
         </div>

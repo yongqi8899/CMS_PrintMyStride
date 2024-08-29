@@ -12,7 +12,7 @@ export default function RootLayout() {
       <ToastContainer position="top-right" autoClose={1500} theme="light" />
       <AuthContextProvider>
         <Header />
-        <div className="w-full !my-24">
+        <div className="w-full !my-24 !m-auto">
           <Outlet />
         </div>
         <Footer />
