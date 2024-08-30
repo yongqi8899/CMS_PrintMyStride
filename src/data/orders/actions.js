@@ -39,16 +39,8 @@ export const updateOrder = async ({ params, request}) => {
     body: JSON.stringify(formData),
   });
 
-  if (!res.ok) {
-    const errorData = await res.json();
-    if (!errorData.error) {
-      throw new Error("An Error occured while paying");
-    }
-    throw new Error(errorData.error);
-  }
-  const data = await res.json();
   showToast(res, "Update failed!", "Update success!");
-  return data;
+  return redirect("/orders");
 };
 
 export const deleteOrder = async ({ params }) => {
