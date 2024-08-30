@@ -45,3 +45,18 @@ export const formatDate = (dateString) => {
     day: "2-digit",
   }).format(date);
 };
+
+export const flattenObject = (obj, parent = '', res = {}) => {
+  for (let key in obj) {
+      if (typeof obj[key] === 'object' && !Array.isArray(obj[key]) && obj[key] !== null) {
+          flattenObject(obj[key], parent + key + '.', res);
+      } else if (Array.isArray(obj[key])) {
+          obj[key].forEach((item, index) => {
+              flattenObject(item, parent + key + '[' + index + '].', res);
+          });
+      } else {
+          res[parent + key] = obj[key];
+      }
+  }
+  return res;
+}

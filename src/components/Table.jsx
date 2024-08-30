@@ -3,6 +3,7 @@ import { formatDate } from "@/utils/index.js";
 
 const Table = ({ path }) => {
   const data = useLoaderData();
+  console.log("table",data);
   const dataKeys = Object.keys(data[0]).slice(1, -1);
   const navigate = useNavigate();
   return (
@@ -13,7 +14,7 @@ const Table = ({ path }) => {
       <table className="table text-center">
         <thead>
           <tr>
-            {dataKeys && dataKeys.map((p) => <th>{p}</th>)}
+            {dataKeys && dataKeys.map((p,index) => <th key={index}> {p}</th>)}
             <th>Actions</th>
           </tr>
         </thead>

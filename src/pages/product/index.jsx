@@ -28,7 +28,7 @@ export default function Products() {
         </button>
       </div>
       {products && (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-4 justify-items-center">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 justify-items-center">
           {products.map((product) => {
             const props = generateProps(product);
             return <CardLayout key={product._id} props={props} />;
