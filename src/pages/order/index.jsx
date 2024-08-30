@@ -1,11 +1,10 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
 import { flattenObject, formatDate } from "@/utils";
 
-import CardImg from "@/components/CardImg";
 export default function Oders() {
   const ordersData = useLoaderData();
   const orders = ordersData.map((data) => flattenObject(data));
-  console.log("orders", orders);
+  const path = "orders";
   const navigate = useNavigate();
   return (
     <>
@@ -45,9 +44,9 @@ export default function Oders() {
                   </td>
                   <td>{order.status}</td>
                   <th>
-                    <button className="btn btn-ghost btn-xs">update</button>
-                    <button className="btn btn-ghost btn-xs">delete</button>
-                    <button className="btn btn-ghost btn-xs">details</button>
+                    <button className="btn btn-ghost btn-xs"  onClick={() => navigate(`/${path}/${order._id}/update`)}>update</button>
+                    <button className="btn btn-ghost btn-xs"  onClick={() => navigate(`/${path}/${order._id}/delete`)}>delete</button>
+                    <button className="btn btn-ghost btn-xs"  onClick={() => navigate(`/${path}/${order._id}`)}>details</button>
                   </th>
                 </tr>
               ))}

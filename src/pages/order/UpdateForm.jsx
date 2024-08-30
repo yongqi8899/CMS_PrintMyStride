@@ -5,7 +5,7 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
-import { useAuth } from '@/context';
+import { useAuth } from "@/context";
 
 export default function UpdateForm() {
   const navigate = useNavigate();
@@ -13,9 +13,8 @@ export default function UpdateForm() {
   const busy = navigation.state === "submitting";
   const { id } = useParams();
   const orders = useLoaderData();
-  const order = orders.find((order) => order._id === id);  
-  const {  user } = useAuth();
-  
+  const order = orders.find((order) => order._id === id);
+
   return (
     <Form method="POST">
       <div className="m-auto card-body w-96">
@@ -28,36 +27,27 @@ export default function UpdateForm() {
               name="userId"
               className="grow"
               placeholder="Please write your userId here"
-              defaultValue={user._id}
+              defaultValue={order.userId._id}
               required
             />
           </label>
-          <label className="flex items-center gap-2 mt-2 input input-bordered">
-            productId
+          <label className="flex items-center gap-2 mt-2 input input-bordered hidden">
+            product Id
             <input
               type="text"
-              name="productId"
+              name="products"
               className="grow"
               placeholder="Please write productId here"
-              defaultValue={order.productId}
+              defaultValue={JSON.stringify(order.products)}
               required
             />
           </label>
-          <label className="flex items-center gap-2 mt-2 input input-bordered">
-            quantity
-            <input
-              type="text"
-              name="quantity"
-              className="grow"
-              placeholder="Please write quantity here"
-              defaultValue={order.quantity}
-              required
-            />
-          </label>
-          <select className="w-full gap-2 mt-2 select select-bordered " name="status"  defaultValue={order.status}>
-            <option  value="payed">
-              payed
-            </option>
+          <select
+            className="w-full gap-2 mt-2 select select-bordered "
+            name="status"
+            defaultValue={order.status}
+          >
+            <option value="payed">payed</option>
             <option value="feet_impression">Feet_impression</option>
             <option value="3D_Druck">3D_Druck</option>
             <option value="shoe_shipped">shoe_shipped</option>
