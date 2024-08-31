@@ -1,4 +1,4 @@
-const Img = ({ src, title, children }) => {
+const Img = ({ src, title}) => {
   return (
       <figure className="overflow-hidden bg-secondary">
         <img

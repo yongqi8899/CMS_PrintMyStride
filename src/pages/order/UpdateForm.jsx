@@ -5,7 +5,6 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
-import { useAuth } from "@/context";
 
 export default function UpdateForm() {
   const navigate = useNavigate();

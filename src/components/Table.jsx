@@ -3,7 +3,6 @@ import { formatDate } from "@/utils/index.js";
 
 const Table = ({ path }) => {
   const data = useLoaderData();
-  console.log("table",data);
   const dataKeys = Object.keys(data[0]).slice(1, -1);
   const navigate = useNavigate();
   return (

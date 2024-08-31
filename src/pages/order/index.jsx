@@ -13,6 +13,7 @@ export default function Oders() {
           <table className="table">
             <thead>
               <tr>
+                <th>Order ID</th>
                 <th>Username</th>
                 <th>Order Date</th>
                 <th>status</th>
@@ -22,6 +23,7 @@ export default function Oders() {
             <tbody>
               {orders.map((order) => (
                 <tr key={order._id}>
+                  <td>{order._id}</td>
                   <td>
                     <div className="flex items-center gap-3">
                       {/* <div className="avatar">
@@ -33,7 +35,9 @@ export default function Oders() {
                         </div>
                       </div> */}
                       <div>
-                        <div className="font-bold">{order["userId.userName"]}</div>
+                        <div className="font-bold">
+                          {order["userId.userName"]}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -42,11 +46,30 @@ export default function Oders() {
                       {formatDate(order.orderDate)}
                     </span>
                   </td>
-                  <td>{order.status}</td>
+                  <td className="align-middle">
+                    <span className="badge badge-secondary">
+                      {order.status}
+                    </span>
+                  </td>
                   <th>
-                    <button className="btn btn-ghost btn-xs"  onClick={() => navigate(`/${path}/${order._id}/update`)}>update</button>
-                    <button className="btn btn-ghost btn-xs"  onClick={() => navigate(`/${path}/${order._id}/delete`)}>delete</button>
-                    <button className="btn btn-ghost btn-xs"  onClick={() => navigate(`/${path}/${order._id}`)}>details</button>
+                    <button
+                      className="btn btn-ghost btn-xs"
+                      onClick={() => navigate(`/${path}/${order._id}/update`)}
+                    >
+                      update
+                    </button>
+                    <button
+                      className="btn btn-ghost btn-xs"
+                      onClick={() => navigate(`/${path}/${order._id}/delete`)}
+                    >
+                      delete
+                    </button>
+                    <button
+                      className="btn btn-ghost btn-xs"
+                      onClick={() => navigate(`/${path}/${order._id}`)}
+                    >
+                      details
+                    </button>
                   </th>
                 </tr>
               ))}

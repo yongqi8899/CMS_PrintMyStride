@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 
 import { getAllUsers} from "@/data/users/loaders.js";
 import { getAllProducts } from "@/data/products/loaders.js";
-import { getAllOrders } from "@/data/orders/loaders.js";
+import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 
 import { createUser, updateUser, deleteUser } from "@/data/users/actions.js";
 import {
@@ -208,7 +208,9 @@ export default function App() {
                   <Order />
                 </Suspense>
               ),
-              loader: getAllOrders,
+              loader: ({params})=>{
+                return getOneOrder(params.id);
+              }
             },
             {
               path: "/orders/:id/update",

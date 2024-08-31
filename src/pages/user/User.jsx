@@ -1,5 +1,4 @@
 import { useParams, useNavigate, useLoaderData } from "react-router-dom";
-import CardImg from "@/components/CardImg";
 
 export default function User() {
   const navigate = useNavigate();

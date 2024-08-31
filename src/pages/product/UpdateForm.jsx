@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import {useState} from "react";
 import { useAuth } from "@/context";
-import CardImg from "@/components/CardImg";
+import Img from "@/components/Img";
 
 export default function UpdateForm() {
   const navigate = useNavigate();
@@ -35,8 +35,8 @@ export default function UpdateForm() {
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Update Product</h2>
           <div className="relative">
-            <CardImg src={imageSrc} alt={product.title} />
-            <label for="image" className="btn absolute right-0 bottom-0">
+            <Img src={imageSrc} alt={product.title} />
+            <label htmlFor="image" className="btn absolute right-0 bottom-0">
               change image
               <input
                 type="file"
