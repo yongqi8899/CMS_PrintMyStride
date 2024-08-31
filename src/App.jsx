@@ -1,7 +1,7 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import { getAllUsers} from "@/data/users/loaders.js";
+import { getAllUsers } from "@/data/users/loaders.js";
 import { getAllProducts } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 
@@ -89,6 +89,12 @@ export default function App() {
                   <Dashboard />
                 </Suspense>
               ),
+              loader: async () => {
+                const users = await getAllUsers();
+                const products = await getAllProducts();
+                const orders = await getAllOrders();
+                return defer({  users, products, orders})
+              },
             },
             {
               path: "/me",
@@ -208,9 +214,9 @@ export default function App() {
                   <Order />
                 </Suspense>
               ),
-              loader: ({params})=>{
+              loader: ({ params }) => {
                 return getOneOrder(params.id);
-              }
+              },
             },
             {
               path: "/orders/:id/update",

@@ -1,22 +1,25 @@
+import { useLoaderData } from "react-router-dom";
+// import { LineChart, PieChart } from 'react-chartkick'
+// import 'chartkick/chart.js'
+
 export default function Dashboard() {
+  const {users, products, orders }= useLoaderData();
+
   return (
-    <div className="shadow stats">
+    <div className="shadow stats flex items-center">
       <div className="stat place-items-center">
-        <div className="stat-title">Downloads</div>
-        <div className="stat-value">31K</div>
-        <div className="stat-desc">From January 1st to February 1st</div>
+        <div className="stat-title">Total User</div>
+        <div className="stat-value">{users.length}</div>
       </div>
 
       <div className="stat place-items-center">
-        <div className="stat-title">Users</div>
-        <div className="stat-value text-secondary">4,200</div>
-        <div className="stat-desc text-secondary">↗︎ 40 (2%)</div>
+        <div className="stat-title">Total Orders</div>
+        <div className="stat-value text-secondary">{orders.length}</div>
       </div>
 
       <div className="stat place-items-center">
-        <div className="stat-title">New Registers</div>
-        <div className="stat-value">1,200</div>
-        <div className="stat-desc">↘︎ 90 (14%)</div>
+        <div className="stat-title">Total Products</div>
+        <div className="stat-value">{products.length}</div>
       </div>
     </div>
   );
