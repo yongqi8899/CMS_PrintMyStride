@@ -1,9 +1,28 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Await } from "react-router-dom";
+import { Suspense} from "react";
 import { LineChart, ColumnChart, PieChart } from "react-chartkick";
 import "chartkick/chart.js";
-
 export default function Dashboard() {
-  const { users, products, orders } = useLoaderData();
+  const data = useLoaderData();
+  
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  const { users, products, orders } = data;
+
+  if (!users || !products || !orders) {
+    return <div>Error: Some data is missing</div>;
+  }
+  return (
+   <Suspense fallback={<div>Loading dashboard data...</div>}>
+      <Await resolve={{ users, products, orders }}>
+        {(resolvedData) => <DashboardContent {...resolvedData} />}
+      </Await>
+    </Suspense>
+  );
+}
+ function DashboardContent({ users, products, orders }) {
   console.log(orders);
   const transformData = (data, dateField) => {
     const dailyCount = {};
