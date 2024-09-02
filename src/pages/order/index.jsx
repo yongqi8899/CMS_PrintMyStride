@@ -24,17 +24,7 @@ export default function Oders() {
               <td>{order._id}</td>
               <td>
                 <div className="flex items-center gap-3">
-                  {/* <div className="avatar">
-                        <div className="w-12 h-12 mask mask-squircle">
-                          <img
-                            src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div> */}
-                  <div>
-                    <div className="font-bold">{order["userId.userName"]}</div>
-                  </div>
+                  <div className="font-bold">{order["userId.userName"]}</div>
                 </div>
               </td>
               <td>
@@ -45,7 +35,7 @@ export default function Oders() {
               <td className="align-middle">
                 <span className="badge badge-secondary">{order.status}</span>
               </td>
-              <th>
+              <td>
                 <button
                   className="btn btn-ghost btn-xs"
                   onClick={() => navigate(`/${path}/${order._id}/update`)}
@@ -64,7 +54,7 @@ export default function Oders() {
                 >
                   details
                 </button>
-              </th>
+              </td>
             </tr>
           ))}
         </tbody>

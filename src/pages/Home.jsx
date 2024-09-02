@@ -5,8 +5,18 @@ function Home() {
   return (
     <section className=" m-20">
       <div className="container mx-auto px-4 text-center">
-        <div className="flex justify-center">
-          <MdComputer fontSize="15em" />
+        <div className="flex justify-center items-center relative">
+          <MdComputer fontSize="20em" />
+          <p
+            className="absolute text-center text-3xl font-bold"
+            style={{
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            PrintMyStride
+          </p>
         </div>
         <h2 className="text-4xl font-bold mb-4">
           Welcome to PrintMyStride CMS
