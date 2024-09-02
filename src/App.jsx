@@ -25,6 +25,7 @@ const ErrorPage = lazy(() => import("@/pages/ErrorPage"));
 const Login = lazy(() => import("@/pages/Login"));
 const Register = lazy(() => import("@/pages/Register"));
 const Me = lazy(() => import("@/pages/Me"));
+const Home = lazy(() => import("@/pages/Home"));
 
 const Users = lazy(() => import("@/pages/user/index.jsx"));
 const User = lazy(() => import("@/pages/user/User"));
@@ -51,10 +52,10 @@ export default function App() {
       element: <RootLayout />,
       children: [
         {
-          index: true,
+          path: "/",
           element: (
             <Suspense fallback={<Loading />}>
-              <Dashboard />
+              <Home />
             </Suspense>
           ),
         },

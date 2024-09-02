@@ -26,7 +26,7 @@ export default function Header() {
     <header className="fixed top-0 z-50 text-xl navbar bold font-redressed bg-neutral">
       <div className="flex-1">
         <NavLink to="/">
-          <h1 className="text-4xl">PrintMyStride</h1>
+          <h1 className="text-4xl">PrintMyStride CMS</h1>
         </NavLink>
         <div className=" drawer-content">
           <label htmlFor="my-drawer" className="ml-10 bg-neutral text-6xl">
