@@ -11,16 +11,15 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
       if (!email || !password) throw new Error("All fields are required");
       setLoading(true);
       const res = await signin({
@@ -28,16 +27,20 @@ export default function Login() {
         password,
       });
       toast.success(res.success);
+      setIsAuthenticated(true);
+      navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);
+      setIsAuthenticated(false)
     } finally {
       setLoading(false);
-      setIsAuthenticated(true);
     }
   };
+
   if (isAuthenticated) {
     return <Navigate to={location.state?.next || "/"} />;
   }
+
   return (
     <>
       <form
