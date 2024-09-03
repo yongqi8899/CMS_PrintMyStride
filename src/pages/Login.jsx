@@ -1,10 +1,32 @@
 import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
+import { jwtDecode } from "jwt-decode";
 
 export default function Login() {
+  const [user, setUser] = useState({});
+  let handleCallbackResponse = (response) => {
+    console.log(response);
+    let userObject = jwtDecode(response.credential);
+    setUser(userObject);
+  };
+  const handleLogout = () => {
+    setUser({});
+  }
+  useEffect(() => {
+    google.accounts.id.initialize({
+      client_id:
+        "257279357908-7ql7rl4aagd5eo5ns7va3b2bidv0vc47.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+    google.accounts.id.renderButton(document.getElementById("googleButton"), {
+      theme: "outline",
+      size: "large",
+    });
+    google.accounts.id.prompt();
+  }, []);
   const location = useLocation();
   const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
   const [{ email, password }, setForm] = useState({
@@ -31,7 +53,7 @@ export default function Login() {
       navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);
-      setIsAuthenticated(false)
+      setIsAuthenticated(false);
     } finally {
       setLoading(false);
     }
@@ -88,6 +110,9 @@ export default function Login() {
             placeholder="Password"
           />
         </label>
+        <div className="flex justify-center">
+          <div id="googleButton">{/* <FcGoogle fontSize="1.5em" /> */}</div>
+        </div>
         <small>
           Don&apos;t have an account?{" "}
           <Link to="/register" className="text-primary hover:underline">
