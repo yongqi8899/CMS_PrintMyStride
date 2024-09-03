@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_BASE_URL;
+const API_URL = import.meta.env.VITE_BASE_URL  || 'http://localhost:8080';
 
 if (!API_URL)
   throw new Error("API URL is required, are you missing a .env file?");
