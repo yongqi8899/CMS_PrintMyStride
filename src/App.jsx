@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import { getAllUsers } from "@/data/users/loaders.js";
 import { getAllProducts } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
+import { getAllPayments } from "@/data/payments/loaders.js";
 
 import { createUser, updateUser, deleteUser } from "@/data/users/actions.js";
 import {
@@ -215,8 +216,10 @@ export default function App() {
                   <Order />
                 </Suspense>
               ),
-              loader: ({ params }) => {
-                return getOneOrder(params.id);
+              loader: async ({ params }) => {
+                const order =  await getOneOrder(params.id);
+                const payments = await getAllPayments();
+                return defer({  order, payments})
               },
             },
             {

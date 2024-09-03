@@ -1,10 +1,18 @@
-import {  useNavigate, useLoaderData } from "react-router-dom";
+import { useNavigate, useLoaderData } from "react-router-dom";
 import { formatDate } from "@/utils";
 
 export default function Order() {
   const navigate = useNavigate();
-  const order = useLoaderData();
+  const data = useLoaderData();
 
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  const { order, payments } = data;
+  const paymentInfo = payments.find(
+    (payment) => payment.orderId._id === order._id
+  );
   return (
     <>
       {order && (
