@@ -28,6 +28,7 @@ export default function Login() {
       });
       toast.success(res.success);
       setIsAuthenticated(true);
+      setCheckSession(true);
       navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);

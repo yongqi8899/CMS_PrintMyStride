@@ -46,6 +46,7 @@ export default function Register() {
       });
       toast.success(res.success);
       setIsAuthenticated(true);
+      setCheckSession(true);
       navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);
