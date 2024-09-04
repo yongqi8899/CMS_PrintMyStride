@@ -83,7 +83,7 @@ export default function CreateForm() {
 
           <button
             type="submit"
-            className="bg-green-500 btn hover:bg-green-600"
+            className="btn btn-gradient-blue"
             disabled={busy}
           >
             {busy ? "Creating..." : "Create"}

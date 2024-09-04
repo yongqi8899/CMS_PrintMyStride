@@ -30,7 +30,7 @@ export default function UpdateForm() {
               required
             />
           </label>
-          <label className="flex items-center gap-2 mt-2 input input-bordered hidden">
+          <label className="flex items-center hidden gap-2 mt-2 input input-bordered">
             product Id
             <input
               type="text"
@@ -46,18 +46,18 @@ export default function UpdateForm() {
             name="status"
             defaultValue={order.status}
           >
-            <option value="payed">payed</option>
-            <option value="feet_impression">Feet_impression</option>
-            <option value="3D_Druck">3D_Druck</option>
-            <option value="shoe_shipped">shoe_shipped</option>
-            <option value="shoe_delivered">shoe_delivered</option>
+            <option value="payed">Payed</option>
+            <option value="feet_impression">Feet Impression</option>
+            <option value="3D_Druck">3D Druck</option>
+            <option value="shoe_shipped">Shoe Shipped</option>
+            <option value="shoe_delivered">Shoe Delivered</option>
           </select>
         </fieldset>
         <div className="justify-end card-actions">
           <button className="btn" onClick={() => navigate(-1)}>
             Cancel
           </button>
-          <button className="bg-green-500 btn hover:bg-green-600">
+          <button className="btn btn-gradient-blue">
             {busy ? "Updating" : "Update"}
           </button>
         </div>

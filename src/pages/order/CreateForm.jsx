@@ -10,7 +10,7 @@ export default function CreateForm() {
       <div className="m-auto card-body w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Create Order</h2>
-          <label className="flex items-center hidden mt-2 gap-2 input input-bordered">
+          <label className="flex items-center hidden gap-2 mt-2 input input-bordered">
             user id
             <input
               type="text"
@@ -21,7 +21,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 gap-2 input input-bordered">
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
             productId
             <input
               type="text"
@@ -31,7 +31,7 @@ export default function CreateForm() {
               required
             />
           </label>
-          <label className="flex items-center mt-2 gap-2 input input-bordered">
+          <label className="flex items-center gap-2 mt-2 input input-bordered">
             quantity
             <input
               type="text"
@@ -41,14 +41,12 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full mt-2 gap-2 select select-bordered " name="status">
-            <option  value="payed">
-              payed
-            </option>
-            <option value="feet_impression">Feet_impression</option>
-            <option value="3D_Druck">3D_Druck</option>
-            <option value="shoe_shipped">shoe_shipped</option>
-            <option value="shoe_delivered">shoe_delivered</option>
+          <select className="w-full gap-2 mt-2 select select-bordered " name="status">
+            <option value="payed">Payed</option>
+            <option value="feet_impression">Feet Impression</option>
+            <option value="3D_Druck">3D Druck</option>
+            <option value="shoe_shipped">Shoe Shipped</option>
+            <option value="shoe_delivered">Shoe Delivered</option>
           </select>
         </fieldset>
         <div className="justify-end card-actions">
@@ -58,7 +56,7 @@ export default function CreateForm() {
 
           <button
             type="submit"
-            className="bg-green-500 btn hover:bg-green-600"
+            className="btn btn-gradient-blue"
             disabled={busy}
           >
             {busy ? "Creating..." : "Create"}

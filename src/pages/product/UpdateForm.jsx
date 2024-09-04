@@ -111,7 +111,7 @@ export default function UpdateForm() {
           <button className="btn" onClick={() => navigate(-1)}>
             Cancel
           </button>
-          <button className="bg-green-500 btn hover:bg-green-600">
+          <button className="btn btn-gradient-blue">
             {busy ? "Updating" : "Update"}
           </button>
         </div>
