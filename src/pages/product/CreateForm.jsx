@@ -1,11 +1,11 @@
 import { Form, useNavigation } from "react-router-dom";
-import { useAuth } from '@/context';
+import { useAuth } from "@/context";
 
 export default function CreateForm() {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
-  const {  user } = useAuth();
-  
+  const { user } = useAuth();
+
   return (
     <Form method="POST" encType="multipart/form-data">
       <div className="m-auto card-body w-96">
@@ -43,12 +43,7 @@ export default function CreateForm() {
           </label>
           <label className="flex items-center gap-2 mt-2 input input-bordered">
             image
-            <input
-              type="file"
-              name="image"
-              className="grow"
-              required
-            />
+            <input type="file" name="image" className="grow" required />
           </label>
           <label className="flex items-center hidden gap-2 mt-2 input input-bordered">
             user id
@@ -61,13 +56,17 @@ export default function CreateForm() {
               required
             />
           </label>
-          <select className="w-full gap-2 mt-2 select select-bordered" name="isPublic">
+          <select
+            className="w-full gap-2 mt-2 select select-bordered"
+            name="isPublic"
+          >
             <option value="true">Public</option>
             <option value="false">Private</option>
           </select>
           <label className="mt-4 field">
             description
             <textarea
+              className="w-full"
               type="text"
               name="description"
               cols="40"

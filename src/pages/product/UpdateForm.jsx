@@ -5,7 +5,7 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
-import {useState} from "react";
+import { useState } from "react";
 import { useAuth } from "@/context";
 import Img from "@/components/Img";
 
@@ -31,17 +31,17 @@ export default function UpdateForm() {
   };
   return (
     <Form method="POST" encType="multipart/form-data">
-      <div className="m-auto w-96 mb-20">
+      <div className="m-auto mb-20 w-96">
         <fieldset disabled={busy}>
           <h2 className="m-auto text-xl bold">Update Product</h2>
           <div className="relative">
             <Img src={imageSrc} alt={product.title} />
-            <label htmlFor="image" className="btn absolute right-0 bottom-0">
+            <label htmlFor="image" className="absolute bottom-0 right-0 btn">
               change image
               <input
                 type="file"
                 name="image"
-                className="opacity-0 absolute"
+                className="absolute opacity-0"
                 onChange={handleImageChange}
               />
             </label>
@@ -94,9 +94,10 @@ export default function UpdateForm() {
             <option value="true">Public</option>
             <option value="false">Private</option>
           </select>
-          <label className="mt-4 field">
+          <label className="w-full mt-4 field">
             description
             <textarea
+              className="w-full"
               type="text"
               name="description"
               cols="40"
