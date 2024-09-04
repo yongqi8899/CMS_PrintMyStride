@@ -26,7 +26,7 @@ export default function Register() {
       password: "",
       confirmPassword: "",
     });
-  }
+  };
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -50,22 +50,21 @@ export default function Register() {
       navigate(location.state?.next || "/");
     } catch (error) {
       toast.error(error.message);
-      if (error.message === "User already exists"){
-        resetForm()
-        navigate("/login")
+      if (error.message === "User already exists") {
+        resetForm();
+        navigate("/login");
       }
     } finally {
       setLoading(false);
     }
   };
 
-
   if (isAuthenticated) {
     return <Navigate to={location.state?.next || "/"} />;
   }
 
   return (
-    <div className="flex flex-wrap items-center min-h-[calc(100vh-4rem)] justify-around">
+    <div className="flex flex-wrap items-center min-h-[calc(100vh-10rem)] justify-around">
       <div className="w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 bg-neutral">
         <form className="flex flex-col gap-3 " onSubmit={handleSubmit}>
           <h1 className="text-2xl font-bold">Signup</h1>
