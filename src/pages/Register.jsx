@@ -116,11 +116,11 @@ export default function Register() {
           <button className="btn btn-gradient-blue" disabled={loading}>
             Create Account
           </button>
-          <div className="relative flex items-center my-1">
+          {/* <div className="relative flex items-center my-1">
             <div className="flex-grow border-t"></div>
             <span className="flex-shrink mx-4 text-xs">OR</span>
             <div className="flex-grow border-t "></div>
-          </div>
+          </div> */}
           <div className="flex justify-center">
             {/* <div onClick={logWithGoogle}>
               <FcGoogle fontSize="1.5em" />
