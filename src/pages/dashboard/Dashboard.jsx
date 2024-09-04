@@ -23,7 +23,6 @@ export default function Dashboard() {
   );
 }
  function DashboardContent({ users, products, orders }) {
-  console.log(orders);
   const transformData = (data, dateField) => {
     const dailyCount = {};
 
@@ -80,7 +79,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div>
-        <p className="text-xl my-4">User Registration:</p>
+        <p className="text-xl my-4">User Register:</p>
         <ColumnChart data={usersData} />
       </div>
       <div>
