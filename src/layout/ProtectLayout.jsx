@@ -1,8 +1,9 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import {memo} from "react";
 import { useAuth } from "@/context/index.js";
 import "react-toastify/dist/ReactToastify.min.css";
 
-export default function ProtectLayout() {
+const ProtectLayout = memo(()=> {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? (
@@ -10,4 +11,5 @@ export default function ProtectLayout() {
   ) : (
     <Navigate to="/login" state={{ next: location.pathname }} />
   );
-}
+})
+export default ProtectLayout;

@@ -1,6 +1,7 @@
 import { Form, useNavigation, useNavigate } from "react-router-dom";
+import { memo } from "react";
 
-export default function DeleteForm() {
+const DeleteForm = memo(() => {
   const navigation = useNavigation();
   const navigate = useNavigate();
   const busy = navigation.state === "submitting";
@@ -22,4 +23,5 @@ export default function DeleteForm() {
       </div>
     </Form>
   );
-}
+});
+export default DeleteForm;

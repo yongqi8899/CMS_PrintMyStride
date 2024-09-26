@@ -5,8 +5,8 @@ import {
   useParams,
   useLoaderData,
 } from "react-router-dom";
-
-export default function UpdateForm() {
+import { memo } from "react";
+const UpdateForm = memo(() => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
@@ -124,4 +124,6 @@ export default function UpdateForm() {
       </div>
     </Form>
   );
-}
+});
+
+export default UpdateForm;

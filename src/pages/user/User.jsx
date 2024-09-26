@@ -1,6 +1,6 @@
 import { useParams, useNavigate, useLoaderData } from "react-router-dom";
-
-export default function User() {
+import { memo } from "react";
+const User = memo(() => {
   const navigate = useNavigate();
   const users = useLoaderData();
   const { id } = useParams();
@@ -20,7 +20,7 @@ export default function User() {
           <div className="min-h-screen hero bg-base-200">
             <div className="flex-col hero-content lg:flex-row-reverse">
               <div>
-              <h2 className="card-title">{user.userName}</h2>
+                <h2 className="card-title">{user.userName}</h2>
                 <div className="flex justify-between mb-2">
                   <p>{user.createdAt.split("T")[0]}</p>
                   <p>{user.role}</p>
@@ -43,4 +43,5 @@ export default function User() {
       )}
     </div>
   );
-}
+});
+export default User;

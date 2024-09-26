@@ -1,10 +1,11 @@
 import { Navigate, Link, useLocation, useNavigate } from "react-router-dom";
+import { memo } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { signin } from "@/data/auth/index.js";
 import { useAuth } from "@/context/index.js";
 
-export default function Login() {
+const Login = memo(() => {
   const location = useLocation();
   const { isAuthenticated, setCheckSession, setIsAuthenticated } = useAuth();
   const [{ email, password }, setForm] = useState({
@@ -45,10 +46,7 @@ export default function Login() {
   return (
     <div className="flex flex-wrap items-center min-h-[calc(100vh-10rem)] justify-around">
       <div className="w-4/5 p-10 m-auto border rounded-2xl md:w-2/5 bg-neutral">
-        <form
-          className="flex flex-col gap-3 " 
-          onSubmit={handleSubmit}
-        >
+        <form className="flex flex-col gap-3 " onSubmit={handleSubmit}>
           <label className="flex items-center gap-2 input input-bordered">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -103,4 +101,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+});
+
+export default Login;

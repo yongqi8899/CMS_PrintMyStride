@@ -1,7 +1,7 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
 import { formatDate } from "@/utils/index.js";
-
-const Table = ({ path }) => {
+import {memo} from "react";
+const Table =  memo(({ path }) => {
   const data = useLoaderData();
   const dataKeys = Object.keys(data[0]).slice(1, -1);
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Table = ({ path }) => {
                   update
                 </button>
                 <button
-                  className="btn ml-2"
+                  className="ml-2 btn"
                   onClick={() => navigate(`/${path}/${item._id}/delete`)}
                 >
                   delete
@@ -50,6 +50,6 @@ const Table = ({ path }) => {
       </table>
     </div>
   );
-};
+});
 
 export default Table;

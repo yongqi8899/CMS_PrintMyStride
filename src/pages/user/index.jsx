@@ -1,8 +1,10 @@
 import Table from "@/components/Table";
-export default function Users() {
+import {memo} from "react";
+const Users = memo(() =>{
   return (
     <>
       <Table path="users" />
     </>
   );
-}
+})
+export default Users;

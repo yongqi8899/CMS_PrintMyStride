@@ -1,8 +1,7 @@
-import { NavLink, useNavigate, redirect } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useRef, useState, useEffect, memo } from "react";
 import { useAuth } from "@/context/index.js";
-
-export default function Header() {
+const Header = memo(() => {
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -117,4 +116,5 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+})
+export default Header;

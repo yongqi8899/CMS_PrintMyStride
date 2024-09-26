@@ -1,6 +1,6 @@
 import { useRouteError } from "react-router-dom";
-
-const ErrorPage = () => {
+import {memo} from "react";
+const ErrorPage =  memo(() => {
   const error = useRouteError();
   return (
     <div className=" flex flex-col m-10 gap-10">
@@ -10,5 +10,5 @@ const ErrorPage = () => {
       </p>
     </div>
   );
-}
+})
 export default ErrorPage;

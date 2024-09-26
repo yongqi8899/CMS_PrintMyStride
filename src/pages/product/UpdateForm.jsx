@@ -8,8 +8,8 @@ import {
 import { useState } from "react";
 import { useAuth } from "@/context";
 import Img from "@/components/Img";
-
-export default function UpdateForm() {
+import { memo } from "react";
+const UpdateForm = memo(() => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
@@ -118,4 +118,5 @@ export default function UpdateForm() {
       </div>
     </Form>
   );
-}
+});
+export default UpdateForm;

@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import {memo} from "react";
 import Img from "@/components/Img";
 
-const CardLayout = ({ props }) => {
+const CardLayout = memo(({ props }) => {
   const { src, title, children, updateNav, deleteNav, detailNav } = props;
   const navigate = useNavigate();
   return (
@@ -12,7 +13,7 @@ const CardLayout = ({ props }) => {
         </figure>
         <div className="card-body">
           {children}
-          <div className="absolute bottom-0 right-0 p-4 flex flex-col gap-2 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute bottom-0 right-0 flex flex-col w-full gap-2 p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
             <button className="btn" onClick={() => navigate(`${updateNav}`)}>
               update
             </button>
@@ -27,5 +28,5 @@ const CardLayout = ({ props }) => {
       </div>
     </>
   );
-};
+});
 export default CardLayout;

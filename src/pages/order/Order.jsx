@@ -1,7 +1,8 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
+import {memo} from "react";
 import { formatDate } from "@/utils";
 
-export default function Order() {
+const Order =  memo(() => {
   const navigate = useNavigate();
   const data = useLoaderData();
 
@@ -18,9 +19,9 @@ export default function Order() {
       {order && (
         <div className="flex flex-col items-center justify-center gap-10">
           <div>
-            <span className="text-xl inline-block mb-4">Order Info:</span>
+            <span className="inline-block mb-4 text-xl">Order Info:</span>
 
-            <div className="flex align-middle gap-4 flex-col md:flex-row  border-2 border-base-200 p-4 rounded-xl">
+            <div className="flex flex-col gap-4 p-4 align-middle border-2 md:flex-row border-base-200 rounded-xl">
               <div>
                 <span className="text-primary">Order Id:</span>{" "}
                 <span>{order._id}</span>
@@ -36,8 +37,8 @@ export default function Order() {
             </div>
           </div>
           <div>
-            <span className="text-xl  inline-block mb-4">User Info:</span>
-            <div className="flex align-middle gap-4 flex-col md:flex-row  border-2 border-base-200 p-4 rounded-xl">
+            <span className="inline-block mb-4 text-xl">User Info:</span>
+            <div className="flex flex-col gap-4 p-4 align-middle border-2 md:flex-row border-base-200 rounded-xl">
               <div>
                 <span className="text-primary">User Id:</span>{" "}
                 <span>{order.userId._id}</span>
@@ -53,8 +54,8 @@ export default function Order() {
             </div>
           </div>
           <div>
-            <span className="text-xl  inline-block mb-4">Ordered Product:</span>
-            <div className="flex align-middle gap-4   border-2 border-base-200 p-6 rounded-xl">
+            <span className="inline-block mb-4 text-xl">Ordered Product:</span>
+            <div className="flex gap-4 p-6 align-middle border-2 border-base-200 rounded-xl">
               <table className="table text-center">
                 <thead>
                   <tr>
@@ -110,4 +111,5 @@ export default function Order() {
       </div>
     </>
   );
-}
+})
+export default Order;

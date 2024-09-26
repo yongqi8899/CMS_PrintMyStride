@@ -1,7 +1,8 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
 import {formatCurrency} from "@/utils";
 import CardLayout from "@/components/CardLayout";
-export default function Products() {
+import {memo} from "react";
+const Products =  memo(() => {
   const products = useLoaderData();
   const navigate = useNavigate();
 
@@ -10,7 +11,7 @@ export default function Products() {
     src: item.image,
     title: item.title,
     children: (
-      <div className="flex text-2xl font-redressed justify-between">
+      <div className="flex justify-between text-2xl font-redressed">
         <h2 >{item.title}</h2>
         <div className="text-secondary"> {formatCurrency(item.price)}{" "}</div>
       </div>
@@ -38,3 +39,6 @@ export default function Products() {
     </>
   );
 }
+)
+
+export default Products;

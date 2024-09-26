@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, memo } from "react";
 
 import { getAllUsers } from "@/data/users/loaders.js";
 import { getAllProducts } from "@/data/products/loaders.js";
@@ -46,7 +46,7 @@ const UpdateOrderForm = lazy(() => import("@/pages/order/UpdateForm"));
 const CreateOrderForm = lazy(() => import("@/pages/order/CreateForm"));
 const DeleteOrderForm = lazy(() => import("@/pages/order/DeleteForm"));
 
-export default function App() {
+const App = memo(() => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -95,7 +95,7 @@ export default function App() {
                 const users = await getAllUsers();
                 const products = await getAllProducts();
                 const orders = await getAllOrders();
-                return defer({  users, products, orders})
+                return defer({ users, products, orders });
               },
             },
             {
@@ -217,9 +217,9 @@ export default function App() {
                 </Suspense>
               ),
               loader: async ({ params }) => {
-                const order =  await getOneOrder(params.id);
+                const order = await getOneOrder(params.id);
                 const payments = await getAllPayments();
-                return defer({  order, payments})
+                return defer({ order, payments });
               },
             },
             {
@@ -262,4 +262,5 @@ export default function App() {
     },
   ]);
   return <RouterProvider router={router} />;
-}
+});
+export default App;

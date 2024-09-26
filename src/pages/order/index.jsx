@@ -1,7 +1,7 @@
 import { useNavigate, useLoaderData } from "react-router-dom";
 import { flattenObject, formatDate } from "@/utils";
-
-export default function Oders() {
+import { memo } from "react";
+const Oders = memo(() => {
   const ordersData = useLoaderData();
   const orders = ordersData.map((data) => flattenObject(data));
   const path = "orders";
@@ -63,4 +63,6 @@ export default function Oders() {
       </table>
     </div>
   );
-}
+});
+
+export default Oders;

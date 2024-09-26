@@ -1,10 +1,10 @@
 import { useLoaderData, Await } from "react-router-dom";
-import { Suspense} from "react";
+import { Suspense, memo } from "react";
 import { LineChart, ColumnChart, PieChart } from "react-chartkick";
 import "chartkick/chart.js";
-export default function Dashboard() {
+const Dashboard = memo(() => {
   const data = useLoaderData();
-  
+
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -15,14 +15,14 @@ export default function Dashboard() {
     return <div>Error: Some data is missing</div>;
   }
   return (
-   <Suspense fallback={<div>Loading dashboard data...</div>}>
+    <Suspense fallback={<div>Loading dashboard data...</div>}>
       <Await resolve={{ users, products, orders }}>
         {(resolvedData) => <DashboardContent {...resolvedData} />}
       </Await>
     </Suspense>
   );
-}
- function DashboardContent({ users, products, orders }) {
+});
+function DashboardContent({ users, products, orders }) {
   const transformData = (data, dateField) => {
     const dailyCount = {};
 
@@ -39,12 +39,12 @@ export default function Dashboard() {
   };
   const transformDataTotalProductSales = (data) => {
     const productSalesCount = {};
-  
+
     data.forEach((order) => {
       order.products.forEach((product) => {
         const productName = product.productId.title;
         const productQuantity = product.quantity;
-  
+
         if (productSalesCount[productName]) {
           productSalesCount[productName] += productQuantity;
         } else {
@@ -52,7 +52,7 @@ export default function Dashboard() {
         }
       });
     });
-  
+
     return productSalesCount;
   };
 
@@ -62,7 +62,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col gap-10 mx-20">
-      <div className="shadow stats flex items-center">
+      <div className="flex items-center shadow stats">
         <div className="stat place-items-center">
           <div className="stat-title">Total User</div>
           <div className="stat-value">{users.length}</div>
@@ -79,17 +79,18 @@ export default function Dashboard() {
         </div>
       </div>
       <div>
-        <p className="text-xl my-4">User Register:</p>
+        <p className="my-4 text-xl">User Register:</p>
         <ColumnChart data={usersData} />
       </div>
       <div>
-      <p className="text-xl my-4">Order Count:</p>
+        <p className="my-4 text-xl">Order Count:</p>
         <LineChart data={orderData} />
       </div>
       <div>
-      <p className="text-xl my-4">Product Sales:</p>
+        <p className="my-4 text-xl">Product Sales:</p>
         <PieChart data={productSalesData} />
       </div>
     </div>
   );
 }
+export default Dashboard;

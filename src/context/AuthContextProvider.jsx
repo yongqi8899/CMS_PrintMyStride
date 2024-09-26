@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { me, signout } from "@/data/auth/index.js";
 import { AuthContext } from "./index.js";
 import { toast } from "react-toastify";
 
-const AuthContextProvider = ({ children }) => {
+const AuthContextProvider = memo(({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [checkSession, setCheckSession] = useState(true);
   const [user, setUser] = useState(null);
@@ -46,6 +46,6 @@ const AuthContextProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+});
 
 export default AuthContextProvider;

@@ -1,7 +1,8 @@
 import { Form, useNavigation } from "react-router-dom";
+import { memo } from "react";
 import { useAuth } from "@/context";
 
-export default function CreateForm() {
+const CreateForm = memo(() =>{
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
   const { user } = useAuth();
@@ -65,4 +66,5 @@ export default function CreateForm() {
       </div>
     </Form>
   );
-}
+})
+export default CreateForm;

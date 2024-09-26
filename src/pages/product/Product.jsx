@@ -1,8 +1,8 @@
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 import Img from "@/components/Img.jsx";
 import {formatCurrency} from "@/utils";
-
-export default function Product() {
+import {memo} from "react";
+const Product = memo(() =>{
   const navigate = useNavigate();
   const { id } = useParams();
   const products = useLoaderData();
@@ -53,4 +53,5 @@ export default function Product() {
       )}
     </>
   );
-}
+})
+export default Product;
