@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { lazy, Suspense, memo } from "react";
+import { lazy, Suspense } from "react";
 
 import { getAllUsers } from "@/data/users/loaders.js";
 import { getAllProducts } from "@/data/products/loaders.js";
@@ -21,32 +21,40 @@ import {
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
 
-const Dashboard = lazy(() => import("@/pages/dashboard/Dashboard"));
-const ErrorPage = lazy(() => import("@/pages/ErrorPage"));
-const Login = lazy(() => import("@/pages/Login"));
-const Register = lazy(() => import("@/pages/Register"));
-const Me = lazy(() => import("@/pages/Me"));
-const Home = lazy(() => import("@/pages/Home"));
+const lazyLoad = (importFunc) => {
+  const LazyComponent = lazy(importFunc);
+  return (props) => (
+    <Suspense fallback={<Loading />}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
+};
+const Dashboard = lazyLoad(() => import("@/pages/dashboard/Dashboard"));
+const ErrorPage = lazyLoad(() => import("@/pages/ErrorPage"));
+const Login = lazyLoad(() => import("@/pages/Login"));
+const Register = lazyLoad(() => import("@/pages/Register"));
+const Me = lazyLoad(() => import("@/pages/Me"));
+const Home = lazyLoad(() => import("@/pages/Home"));
 
-const Users = lazy(() => import("@/pages/user/index.jsx"));
-const User = lazy(() => import("@/pages/user/User"));
-const UpdateUserForm = lazy(() => import("@/pages/user/UpdateForm"));
-const CreateUserForm = lazy(() => import("@/pages/user/CreateForm"));
-const DeleteUserForm = lazy(() => import("@/pages/user/DeleteForm"));
+const Users = lazyLoad(() => import("@/pages/user/index.jsx"));
+const User = lazyLoad(() => import("@/pages/user/User"));
+const UpdateUserForm = lazyLoad(() => import("@/pages/user/UpdateForm"));
+const CreateUserForm = lazyLoad(() => import("@/pages/user/CreateForm"));
+const DeleteUserForm = lazyLoad(() => import("@/pages/user/DeleteForm"));
 
-const Products = lazy(() => import("@/pages/product/index.jsx"));
-const Product = lazy(() => import("@/pages/product/Product"));
-const UpdateProductForm = lazy(() => import("@/pages/product/UpdateForm"));
-const CreateProductForm = lazy(() => import("@/pages/product/CreateForm"));
-const DeleteProductForm = lazy(() => import("@/pages/product/DeleteForm"));
+const Products = lazyLoad(() => import("@/pages/product/index.jsx"));
+const Product = lazyLoad(() => import("@/pages/product/Product"));
+const UpdateProductForm = lazyLoad(() => import("@/pages/product/UpdateForm"));
+const CreateProductForm = lazyLoad(() => import("@/pages/product/CreateForm"));
+const DeleteProductForm = lazyLoad(() => import("@/pages/product/DeleteForm"));
 
-const Orders = lazy(() => import("@/pages/order/index.jsx"));
-const Order = lazy(() => import("@/pages/order/Order"));
-const UpdateOrderForm = lazy(() => import("@/pages/order/UpdateForm"));
-const CreateOrderForm = lazy(() => import("@/pages/order/CreateForm"));
-const DeleteOrderForm = lazy(() => import("@/pages/order/DeleteForm"));
+const Orders = lazyLoad(() => import("@/pages/order/index.jsx"));
+const Order = lazyLoad(() => import("@/pages/order/Order"));
+const UpdateOrderForm = lazyLoad(() => import("@/pages/order/UpdateForm"));
+const CreateOrderForm = lazyLoad(() => import("@/pages/order/CreateForm"));
+const DeleteOrderForm = lazyLoad(() => import("@/pages/order/DeleteForm"));
 
-const App = memo(() => {
+const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -54,43 +62,23 @@ const App = memo(() => {
       children: [
         {
           path: "/",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Home />
-            </Suspense>
-          ),
+          element: <Home />,
         },
         {
           path: "/login",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Login />
-            </Suspense>
-          ),
+          element: <Login />,
         },
         {
           path: "/register",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <Register />
-            </Suspense>
-          ),
+          element: <Register />,
         },
         {
           index: "",
-          element: (
-            <Suspense fallback={<Loading />}>
-              <ProtectLayout />
-            </Suspense>
-          ),
+          element: <ProtectLayout />,
           children: [
             {
               path: "/dashboard",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Dashboard />
-                </Suspense>
-              ),
+              element: <Dashboard />,
               loader: async () => {
                 const users = await getAllUsers();
                 const products = await getAllProducts();
@@ -100,122 +88,70 @@ const App = memo(() => {
             },
             {
               path: "/me",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Me />
-                </Suspense>
-              ),
+              element: <Me />,
             },
             {
               path: "/users",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Users />
-                </Suspense>
-              ),
+              element: <Users />,
               loader: getAllUsers,
             },
             {
               path: "/users/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <User />
-                </Suspense>
-              ),
+              element: <User />,
               loader: getAllUsers,
             },
             {
               path: "/users/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateUserForm />
-                </Suspense>
-              ),
+              element: <UpdateUserForm />,
               action: updateUser,
               loader: getAllUsers,
             },
             {
               path: "/users/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateUserForm />
-                </Suspense>
-              ),
+              element: <CreateUserForm />,
               action: createUser,
             },
             {
               path: "/users/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteUserForm />
-                </Suspense>
-              ),
+              element: <DeleteUserForm />,
               action: deleteUser,
               loader: getAllUsers,
             },
             {
               path: "/products",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Products />
-                </Suspense>
-              ),
+              element: <Products />,
               loader: getAllProducts,
             },
             {
               path: "/products/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Product />
-                </Suspense>
-              ),
+              element: <Product />,
               loader: getAllProducts,
             },
             {
               path: "/products/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateProductForm />
-                </Suspense>
-              ),
+              element: <UpdateProductForm />,
               action: updateProduct,
               loader: getAllProducts,
             },
             {
               path: "/products/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateProductForm />
-                </Suspense>
-              ),
+              element: <CreateProductForm />,
               action: createProduct,
             },
             {
               path: "/products/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteProductForm />
-                </Suspense>
-              ),
+              element: <DeleteProductForm />,
               action: deleteProduct,
               loader: getAllProducts,
             },
             {
               path: "/orders",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Orders />
-                </Suspense>
-              ),
+              element: <Orders />,
               loader: getAllOrders,
             },
             {
               path: "/orders/:id",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <Order />
-                </Suspense>
-              ),
+              element: <Order />,
               loader: async ({ params }) => {
                 const order = await getOneOrder(params.id);
                 const payments = await getAllPayments();
@@ -224,43 +160,27 @@ const App = memo(() => {
             },
             {
               path: "/orders/:id/update",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <UpdateOrderForm />
-                </Suspense>
-              ),
+              element: <UpdateOrderForm />,
               action: updateOrder,
               loader: getAllOrders,
             },
             {
               path: "/orders/create",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <CreateOrderForm />
-                </Suspense>
-              ),
+              element: <CreateOrderForm />,
               action: createOrder,
             },
             {
               path: "/orders/:id/delete",
-              element: (
-                <Suspense fallback={<Loading />}>
-                  <DeleteOrderForm />
-                </Suspense>
-              ),
+              element: <DeleteOrderForm />,
               action: deleteOrder,
               loader: getAllOrders,
             },
           ],
         },
       ],
-      errorElement: (
-        <Suspense fallback={<Loading />}>
-          <ErrorPage />
-        </Suspense>
-      ),
+      errorElement: <ErrorPage />,
     },
   ]);
   return <RouterProvider router={router} />;
-});
+};
 export default App;
