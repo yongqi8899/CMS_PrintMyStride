@@ -1,11 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
+// Data loaders
 import { getAllUsers } from "@/data/users/loaders.js";
 import { getAllProducts } from "@/data/products/loaders.js";
 import { getAllOrders, getOneOrder } from "@/data/orders/loaders.js";
 import { getAllPayments } from "@/data/payments/loaders.js";
 
+// Data actions
 import { createUser, updateUser, deleteUser } from "@/data/users/actions.js";
 import {
   createProduct,
@@ -18,9 +20,11 @@ import {
   deleteOrder,
 } from "@/data/orders/actions.js";
 
+// Layouts
 import { RootLayout, ProtectLayout } from "@/layout";
 import Loading from "@/components/Loading.jsx";
 
+// lazyLoad
 const lazyLoad = (importFunc) => {
   const LazyComponent = lazy(importFunc);
   return (props) => (
@@ -29,30 +33,6 @@ const lazyLoad = (importFunc) => {
     </Suspense>
   );
 };
-const Dashboard = lazyLoad(() => import("@/pages/dashboard/Dashboard"));
-const ErrorPage = lazyLoad(() => import("@/pages/ErrorPage"));
-const Login = lazyLoad(() => import("@/pages/Login"));
-const Register = lazyLoad(() => import("@/pages/Register"));
-const Me = lazyLoad(() => import("@/pages/Me"));
-const Home = lazyLoad(() => import("@/pages/Home"));
-
-const Users = lazyLoad(() => import("@/pages/user/index.jsx"));
-const User = lazyLoad(() => import("@/pages/user/User"));
-const UpdateUserForm = lazyLoad(() => import("@/pages/user/UpdateForm"));
-const CreateUserForm = lazyLoad(() => import("@/pages/user/CreateForm"));
-const DeleteUserForm = lazyLoad(() => import("@/pages/user/DeleteForm"));
-
-const Products = lazyLoad(() => import("@/pages/product/index.jsx"));
-const Product = lazyLoad(() => import("@/pages/product/Product"));
-const UpdateProductForm = lazyLoad(() => import("@/pages/product/UpdateForm"));
-const CreateProductForm = lazyLoad(() => import("@/pages/product/CreateForm"));
-const DeleteProductForm = lazyLoad(() => import("@/pages/product/DeleteForm"));
-
-const Orders = lazyLoad(() => import("@/pages/order/index.jsx"));
-const Order = lazyLoad(() => import("@/pages/order/Order"));
-const UpdateOrderForm = lazyLoad(() => import("@/pages/order/UpdateForm"));
-const CreateOrderForm = lazyLoad(() => import("@/pages/order/CreateForm"));
-const DeleteOrderForm = lazyLoad(() => import("@/pages/order/DeleteForm"));
 
 const App = () => {
   const router = createBrowserRouter([
@@ -60,127 +40,143 @@ const App = () => {
       path: "/",
       element: <RootLayout />,
       children: [
+        // Public Routes
         {
           path: "/",
-          element: <Home />,
+          element: lazyLoad(() => import("@/pages/Home"))(),
         },
         {
           path: "/login",
-          element: <Login />,
+          element: lazyLoad(() => import("@/pages/Login"))(),
         },
         {
           path: "/register",
-          element: <Register />,
+          element: lazyLoad(() => import("@/pages/Register"))(),
         },
+
+        // Protected Routes
         {
-          index: "",
           element: <ProtectLayout />,
           children: [
+            // Dashboard
             {
               path: "/dashboard",
-              element: <Dashboard />,
+              element: lazyLoad(() => import("@/pages/dashboard/Dashboard"))(),
               loader: async () => {
-                const users = await getAllUsers();
-                const products = await getAllProducts();
-                const orders = await getAllOrders();
-                return { users, products, orders };
+                try {
+                  const [users, products, orders] = await Promise.all([
+                    getAllUsers(),
+                    getAllProducts(),
+                    getAllOrders(),
+                  ]);
+                  return { users, products, orders };
+                } catch (error) {
+                  console.error(error);
+                }
               },
             },
             {
               path: "/me",
-              element: <Me />,
+              element: lazyLoad(() => import("@/pages/Me"))(),
             },
+
+            // Users
             {
               path: "/users",
-              element: <Users />,
+              element: lazyLoad(() => import("@/pages/user/index.jsx"))(),
               loader: getAllUsers,
             },
             {
               path: "/users/:id",
-              element: <User />,
+              element: lazyLoad(() => import("@/pages/user/User"))(),
               loader: getAllUsers,
             },
             {
               path: "/users/:id/update",
-              element: <UpdateUserForm />,
+              element: lazyLoad(() => import("@/pages/user/UpdateForm"))(),
               action: updateUser,
               loader: getAllUsers,
             },
             {
               path: "/users/create",
-              element: <CreateUserForm />,
+              element: lazyLoad(() => import("@/pages/user/CreateForm"))(),
               action: createUser,
             },
             {
               path: "/users/:id/delete",
-              element: <DeleteUserForm />,
+              element: lazyLoad(() => import("@/pages/user/DeleteForm"))(),
               action: deleteUser,
               loader: getAllUsers,
             },
+
+            // Products
             {
               path: "/products",
-              element: <Products />,
+              element: lazyLoad(() => import("@/pages/product/index.jsx"))(),
               loader: getAllProducts,
             },
             {
               path: "/products/:id",
-              element: <Product />,
+              element: lazyLoad(() => import("@/pages/product/Product"))(),
               loader: getAllProducts,
             },
             {
               path: "/products/:id/update",
-              element: <UpdateProductForm />,
+              element: lazyLoad(() => import("@/pages/product/UpdateForm"))(),
               action: updateProduct,
               loader: getAllProducts,
             },
             {
               path: "/products/create",
-              element: <CreateProductForm />,
+              element: lazyLoad(() => import("@/pages/product/CreateForm"))(),
               action: createProduct,
             },
             {
               path: "/products/:id/delete",
-              element: <DeleteProductForm />,
+              element: lazyLoad(() => import("@/pages/product/DeleteForm"))(),
               action: deleteProduct,
               loader: getAllProducts,
             },
+
+            // Orders
             {
               path: "/orders",
-              element: <Orders />,
+              element: lazyLoad(() => import("@/pages/order/index.jsx"))(),
               loader: getAllOrders,
             },
             {
               path: "/orders/:id",
-              element: <Order />,
-              loader: async ({ params }) => {
-                const order = await getOneOrder(params.id);
-                const payments = await getAllPayments();
-                return { order, payments };
-              },
+              element: lazyLoad(() => import("@/pages/order/Order"))(),
+              loader: async ({ params }) => ({
+                order: await getOneOrder(params.id),
+                payments: await getAllPayments(),
+              }),
             },
             {
               path: "/orders/:id/update",
-              element: <UpdateOrderForm />,
+              element: lazyLoad(() => import("@/pages/order/UpdateForm"))(),
               action: updateOrder,
               loader: getAllOrders,
             },
             {
               path: "/orders/create",
-              element: <CreateOrderForm />,
+              element: lazyLoad(() => import("@/pages/order/CreateForm"))(),
               action: createOrder,
             },
             {
               path: "/orders/:id/delete",
-              element: <DeleteOrderForm />,
+              element: lazyLoad(() => import("@/pages/order/DeleteForm"))(),
               action: deleteOrder,
               loader: getAllOrders,
             },
           ],
         },
       ],
-      errorElement: <ErrorPage />,
+      errorElement: lazyLoad(() => import("@/pages/ErrorPage"))(),
     },
   ]);
+
   return <RouterProvider router={router} />;
 };
+
 export default App;
