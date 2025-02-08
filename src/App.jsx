@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense, memo } from "react";
 
 import { getAllUsers } from "@/data/users/loaders.js";
@@ -95,7 +95,7 @@ const App = memo(() => {
                 const users = await getAllUsers();
                 const products = await getAllProducts();
                 const orders = await getAllOrders();
-                return defer({ users, products, orders });
+                return { users, products, orders };
               },
             },
             {
@@ -219,7 +219,7 @@ const App = memo(() => {
               loader: async ({ params }) => {
                 const order = await getOneOrder(params.id);
                 const payments = await getAllPayments();
-                return defer({ order, payments });
+                return { order, payments };
               },
             },
             {
